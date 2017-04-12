@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-python-how-to-get-list-name" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/02/python-how-to-get-list-name/" class="article-date">
+  <time datetime="2015-05-02T12:30:30.000Z" itemprop="datePublished">2015-05-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/科学计算/">科学计算</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/02/python-how-to-get-list-name/">[Python小技巧]怎样得到list的变量名称</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在python中，变量的概念并不严格。所以当我们定义了一个list（或者其它对象）时，想要得到它的名字，应该怎么做呢？<br>比如：<code>index = [1,2,3,4,5]</code><br>我们想要在别的地方调用index这个变量名，例如在画图时想将index作为标签或是图标名称，应该怎样得到index？如果直接调用index，得到的实际上是index这个数组，即[1,2,3,4,5]，而不是list的名称。<br>在这个时候，我们可以将list存入一个dict里面，即：<code>name_list = {&quot;index&quot;: index}</code><br>只能将”index”作为键，index数组作为值存入词典。因为如果将index数组作为键的话，会报error，即list不能被hashable。</p>
+<blockquote>
+<p>注：hashable，意为可哈希的。一个对象hashable，指这个对象在其生存期内有一个不变的哈希值（hash value），即<strong>hash</strong>()方法返回的值。所有不可变的（immutable）内置对象都是hashable的，比如string，tuple。所有可变的（mutable）内置容器都不是hashable的，如list，dict。<br>当我们需要index的变量名的时候，由于变量名是以键的形式保存的，我们可以遍历name_list，在dict里面查找index变量本身，如果某个键对应的值是index，就将这个键存为index的名称，即“index”，赋值给某个string类型的变量。这样就得到了我们需要的变量名。<br>虽然没有试验过，但是这个方法对于别的类型的变量应该也同样适用。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/05/02/python-how-to-get-list-name/" data-id="cj1f4oby40015xds6og8x0vrt" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dict/">dict</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/list/">list</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/name/">name</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-matplotlib" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/29/python-matplotlib/" class="article-date">
+  <time datetime="2015-04-29T14:41:14.000Z" itemprop="datePublished">2015-04-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/科学计算/">科学计算</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/29/python-matplotlib/">Python的一些画图函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python的画图工具箱即Matplotlib，类似于Matlab里面画图功能的包。<br>在Python 里有一个集成了Matplotlib和其他一些数学包比如Numpy的包，叫Pylab，所以一般只需要：from pylab import *<br>在这个包里面已经默认了numpy的alias为np，所以如果需要调用numpy直接就用它的alias就行。</p>
+<p>#返回一个从x1到x2的共有num个数的数组（x1，x2，num都代表参数，下同）<br><code>X＝np.linspace(x1, x2, num, endpoint=True)</code><br>这里如果endpoint设为True则重点为x2，设为False则终点为x2前一点。默认为True。</p>
+<p>#创建一个m*n个点的图，图的分辨率为t<br><code>figure(figsize=(m, n), dpi=t)</code></p>
+<p>#创建一个p*q的子图，接下来的图绘在第r块子图上<br><code>subplot(p, q, r)</code></p>
+<p>#画出以X数组为x轴数值，Y数组为y轴数值的图，线条颜色为红色，线条宽度为2.0（像素）且连续<br><code>plot(X, Y, color=&quot;red&quot;, linewidth=2.0, linestyle=&quot;-&quot;)</code></p>
+<p>#设置横纵轴的上下限<br><code>xlim(x1, x2)</code><br><code>ylim(y1, y2)</code><br>这里为了更好地设置上下限，可以用线条的X数组和Y数组的上下限来设置，如:<br><code>x1, x2 = X.min()_1.1, X.max()_1.1
+y1, y2 = Y.min()_1.1, Y.max()_1.1</code><br>或者可以引入差分的思想:<br><code>xmin, xmax = X.min(), X.max()
+ymin, ymax = Y.min(), Y.max()
+dx = (xmax - xmin) * 0.2
+dy = (ymax - ymin) * 0.2
+x1, x2 = xmin-dx, xmax+dx
+y1, y2 = ymin-dy, ymax+dy</code></p>
+<p>#设置横纵轴的长度及划分(即在这些点标记)<br><code>xticks(np.linspace(x1, x2, num, endpoint=True))</code><br><code>yticks(np.linspace(y1, y2, num, endpoint=True))</code><br>这里的xticks或yticks里面的数组值可以设置成我们想要知道的特殊值。<br>在边界值包含了<code>pi</code>这种字符时，可以用LaTex来做划分的标签（使其更美观）：<br><code>xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi],
+[r&#39;$-\pi$&#39;, r&#39;$-\pi/2$&#39;, r&#39;$0$&#39;, r&#39;$+\pi/2$&#39;, r&#39;$+\pi$&#39;])
+yticks([-1, 0, +1], [r&#39;$-1$&#39;, r&#39;$0$&#39;, r&#39;$1$&#39;])</code></p>
+<p>本文主要参考<a href="http://www.labri.fr/perso/nrougier/teaching/matplotlib/" target="_blank" rel="external">Matplotlib tutorial</a><br>将里面的范例总结成了<code>函数(参数)</code>形式。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/04/29/python-matplotlib/" data-id="cj1f4obyf001axds6missqir2" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matplotlib/">matplotlib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/plot/">plot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ef-bc-bb-e4-b8-80-e8-93-91-e7-83-9f-e9-9b-a8-e4-bb-bb-e5-b9-b3-e7-94-9f-ef-bc-bd-e7-9a-84-e5-bc-80-e5-a4-b4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/27/ef-bc-bb-e4-b8-80-e8-93-91-e7-83-9f-e9-9b-a8-e4-bb-bb-e5-b9-b3-e7-94-9f-ef-bc-bd-e7-9a-84-e5-bc-80-e5-a4-b4/" class="article-date">
+  <time datetime="2015-04-27T13:41:39.000Z" itemprop="datePublished">2015-04-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/心得/">心得</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/27/ef-bc-bb-e4-b8-80-e8-93-91-e7-83-9f-e9-9b-a8-e4-bb-bb-e5-b9-b3-e7-94-9f-ef-bc-bd-e7-9a-84-e5-bc-80-e5-a4-b4/">［一蓑烟雨任平生］的开头</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>最初的最初是先搞定域名和主机。</p>
+<ul>
+<li>也有考虑过用Github Page或者国内的一些域名托管网站来搞定域名，但是Github的页面刷新速度据说是跟空间内的文件大小有关，就没考虑了（更何况偶尔会被GFW拦住），国内的域名系统都要备案，要大概三周的时间，有点慢。“该出手时就出手”，果断去godaddy弄了一个域名，但是找优惠的时候出了一些问题，如果优惠没有找“合适”的话可能进不了最后一步。godaddy是全球最大的域名托管网站，据说如果被墙了，瓷器国会有1/3的网站倒闭，所以它的域名还是很让人放心的，但是主机嘛，呵呵。</li>
+<li>主机就是在国内随便找了一家香港主机，因为香港离大陆近些，相对也不那么容易被强。再就是去DNSPod把NameServer填到了域名管理的某处，把主机填到了DNSPod，这样可以让DNS的解析更快。DNSPod是免费的哟，而且加速得你舍不得不用它。</li>
+<li>听说还可以用别的云存储／CDN放自己的图片之类的，这个还没研究。</li>
+</ul>
+</li>
+<li><p>在有了虚拟主机和自己的域名以后，在空间里建了一个数据库，设置用户名和密码。</p>
+</li>
+<li>从WordPress 的4.2中文版开始搭建，该模板果真是神器。将模板拷进public_html目录，继而解压到首页，安装，就可以开始用之前的用户名和密码开始进行配置。很快就可以有一个个人博客啦。</li>
+<li>WordPress是可以进行二次开发的，但是它是用PHP写成的，所以最好学一些PHP，再加上一些网站的基本知识（html／css）。</li>
+<li><p>默认的主题挺好看的，就不换了（其实是换来换去觉得都没原来的好看我会说么）。</p>
+</li>
+<li><p>然后就是装插件的过程啦。首先遇到的一个问题就是，基本上评论和自己的头像都不显示，据说是WordPress默认调用了Gravatar的头像，这是一个头像网站，唯一的缺点就是它被墙了。所以去网上查了一个解决方案，即装一个头像插件，叫做WP User Avatar。这个插件很不错，可以用它的默认头像，也可以给每一个用户分配自己上传到媒体库的头像。</p>
+</li>
+<li><p>再就是觉得网站的标题栏没有图像，不太“炫酷”，于是就去查了一点PHP代码，在“外观”－“编辑”－“header.php”的&lt;head&gt;&lt;/head&gt;中间加入一段：</p>
+<blockquote>
+<p>&lt;link id=”favicon” href=”<a href="http://www.xxxxx.jpg" target="_blank" rel="external">http://www.xxxxx.jpg</a>“ rel=”icon” type=”image/x-icon” /&gt;</p>
+</blockquote>
+<ul>
+<li>这里的href就是一个公开的URL，可以直接用自己博客里的媒体库的图的链接。</li>
+</ul>
+</li>
+<li><p>然后又觉得没有音乐播放器，怎么能够叫炫酷呢？这个时候，还是继续用插件吧。本来是想在侧边栏加上一栏播放器的，但是好像并没有那么炫酷而又逼格满满的插件。所以装了Hermit，然后把自己的网易云音乐的“我喜欢的音乐的歌单”链进来了。</p>
+</li>
+<li>音乐的效果就是这样啦。[hermit auto=”0” loop=”0” unexpand=”0”]netease_playlist#:50436348[/hermit]</li>
+<li>现在就是给个“菜单”的时候啦，因为我有了“音乐”这个页面，又有了“关于”这个页面，感觉没有菜单没法跳页面啊。所以这个时候，就编辑了编辑菜单。菜单貌似是可以加二级菜单的。可以把分类目录也放进菜单里面，这样就可以简单地访问你的各类文章啦。</li>
+<li>暂时就这么多。虽然都是一些查查找找的工作，但是搜索能力也挺重要嘛，谁说不是呢。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/04/27/ef-bc-bb-e4-b8-80-e8-93-91-e7-83-9f-e9-9b-a8-e4-bb-bb-e5-b9-b3-e7-94-9f-ef-bc-bd-e7-9a-84-e5-bc-80-e5-a4-b4/" data-id="cj1f4obxb000mxds62bnl8dqd" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DNS/">DNS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FAQ/">FAQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/host/">host</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/建站/">建站</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e6-88-91-e7-9a-84-e7-ac-ac-e4-b8-80-e7-af-87-e5-8d-9a-e5-ae-a2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/27/e6-88-91-e7-9a-84-e7-ac-ac-e4-b8-80-e7-af-87-e5-8d-9a-e5-ae-a2/" class="article-date">
+  <time datetime="2015-04-26T17:55:10.000Z" itemprop="datePublished">2015-04-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/心得/">心得</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/27/e6-88-91-e7-9a-84-e7-ac-ac-e4-b8-80-e7-af-87-e5-8d-9a-e5-ae-a2/">我的第一篇博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>弄了几个小时，anyway，弄完了。</p>
+<p>还需要调调格式什么的，anyway，我已经很满意了。</p>
+<p>这个博客将会陪伴我很久，就像生命中的所有那些得到的，或者是失去的。</p>
+<p><a href="http://www.zengmingxia.com/wp-content/uploads/2015/04/2cf5e0fe9925bc31aa5995b15ddf8db1cb137097.jpg" target="_blank" rel="external"><img src="http://www.zengmingxia.com/wp-content/uploads/2015/04/2cf5e0fe9925bc31aa5995b15ddf8db1cb137097-300x188.jpg" alt="2cf5e0fe9925bc31aa5995b15ddf8db1cb137097"></a></p>
+<p>就这样面对每一天吧。</p>
+<p>PS，建站服务器：gegehost；域名托管：godaddy；dns解析：DNSPod。</p>
+<p>Wish bright future.</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/04/27/e6-88-91-e7-9a-84-e7-ac-ac-e4-b8-80-e7-af-87-e5-8d-9a-e5-ae-a2/" data-id="cj1f4obwv000fxds6rb8ikqtu" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-e7-ac-94-e8-ae-b0-e4-b8-80" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/20/python-e7-ac-94-e8-ae-b0-e4-b8-80/" class="article-date">
+  <time datetime="2015-01-20T14:41:47.000Z" itemprop="datePublished">2015-01-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/科学计算/">科学计算</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/20/python-e7-ac-94-e8-ae-b0-e4-b8-80/">Python笔记(一)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>(1)str[begin:end:step]以step步数，从begin到end-1。<br>特殊情况是：<br><code>&amp;gt;&amp;gt;str1 = &quot;helloworld&quot;</code><br><code>&amp;gt;&amp;gt;str1[::-1]=&#39;dlrowolleh&#39;</code><br>(2)raw_input()用来接收我们从console上输入的数，（<strong>read-after-write</strong>）代码可以这么写<br><code>y = float(raw_input(&#39;&#39;Please enter a number: ))</code><br>上一段代码的意思即提示输入一个数字，并且将数字转换成浮点数，赋值给y<br>(3)<code>3*&#39;a&#39;</code>表示三个<code>&#39;a&#39;</code>，即<code>&#39;aaa&#39;</code><br>(4)<code>elif</code>即别的编程语言中的<code>else if</code><br>(5)在Python规范里，比较String和int大小时，String总比int大。<br>(6)用Python解决了一个很经典的数学题（囧o(╯□╰)o）：某次数学竞赛共有10道选择题,每答对一题得4分,不答对得0分,答错扣1分，一共可能有多少种可能的成绩？<br>代码贴上来，</p>
+<pre><code>for x in range(0,11):     for z in range(0,11-x):         y = 10-x-z         fx = 4*x - y         if fx not in arr:             arr.append(fx) print(len(arr))
+</code></pre><p>Python的数组下标很坑，一定要注意，range里亦是。<br>但是Python的in …这种判断方法，可以用来做很多事，比如将数组去重。<br>(7)“guess and check” methods<br>即猜测初始值，然后逐渐逼近的思想。比如求一个整数的平方根或者立方根时，先初始化，再逐渐逼近到一定的值，就可以了。<br>代码来自MIT6.00.1课程：</p>
+<blockquote>
+<p><code>x = int(raw_input(&#39;Enter an integer: &#39;)) for ans in range(0, abs(x)+1): if ans**3 == abs(x): break if ans**3 != abs(x): print(str(x) + &#39; is not a perfect cube&#39;) else: if x &amp;lt; 0: ans = - ans print(&#39;Cube root of &#39; + str(x) + &#39; is &#39; + str(ans))</code><br>当没有初始值时，Exhaustive enumeration穷尽枚举法在有序且有限集合里很有效。<br>(8)Python里break也是跳出最近层循环</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/20/python-e7-ac-94-e8-ae-b0-e4-b8-80/" data-id="cj1f4oby10012xds6jkik8o8i" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-gnutella-e7-b3-bb-e7-bb-9f-e6-9e-b6-e6-9e-84-e7-9a-84-e7-bc-ba-e7-82-b9-e5-8f-8a-e6-94-b9-e8-bf-9b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/04/gnutella-e7-b3-bb-e7-bb-9f-e6-9e-b6-e6-9e-84-e7-9a-84-e7-bc-ba-e7-82-b9-e5-8f-8a-e6-94-b9-e8-bf-9b/" class="article-date">
+  <time datetime="2014-12-04T11:38:47.000Z" itemprop="datePublished">2014-12-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/网络/">网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/04/gnutella-e7-b3-bb-e7-bb-9f-e6-9e-b6-e6-9e-84-e7-9a-84-e7-bc-ba-e7-82-b9-e5-8f-8a-e6-94-b9-e8-bf-9b/">Gnutella系统架构的缺点及改进</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Gnutella是一个P2P协议，也可以被看做一个系统架构or一个应用。<br>准确地说还是一个网络共享协议。<br>Gnutella的名字来源据说是创始人吃多了<strong>nutella</strong>（一种巧克力），所以它的发音也跟nutella相同。</p>
+<h1 id="Gnutella的缺点"><a href="#Gnutella的缺点" class="headerlink" title="Gnutella的缺点"></a>Gnutella的缺点</h1><p>一、在Gnutella对资源进行搜索时，会用到一个变量<strong>TTL</strong>，要确定一个恰当的TTL值，有一定难度：1.如果设定的值比较高，因为查询终止条件是TTL=0，这样会让查询次数成比例增长，给网络带来不必要的负担；2.如果设定的值比较小，会增加找不到所需要的目标资源的可能性。<br>二、Gnutella的拓扑结构过于复杂，会产生大量的Query冗余信息，扩展性较差。冗余消息会增加网络的负担，还会引起短路效应。</p>
+<div class="image-package">
+
+<p><img src="http://upload-images.jianshu.io/upload_images/27708-626a09c93aff3197.jpg?imageView2/2/w/1240/q/100" alt="冗余信息的成因.jpg"></p>
+<p><div class="image-caption" style="text-align: center;">冗余信息的成因.jpg</div><br></p></div><br>如图所示，有四个节点，分别为src起点，dest目标节点，和a、b两个中间节点。Src向周围的节点发送请求消息，a和b在接收后，将消息转发给目标节点dest，则dest会收到该消息的两个副本，后到的副本即可被视为冗余消息。<br>三、 Gnutella的假设和现实的冲突。大部分的P2P系统都基于这样的假设：所有的节点（参与者）都主动地、自愿地、毫无保留地共享自己拥有的有用资源。Adar的研究表明，接近70%的Gnutella用户不会共享任何资源，50%的答复来自1%的共享主机，这就是<strong>free riding（搭便车）</strong>问题。这种问题会导致<strong>Tragedy of Common（公共悲剧）</strong>问题，即由于P2P网络系统上大量相同资源的传播，造成共享资源趋于一致，P2P结构演变成传统的C/S（客户机/服务器）结构。根据分析，这些问题来自于Gnutella的使用者对安全性和机器带宽耗费的担忧。<br>四、安全问题。在Gnutella架构中，路由攻击、分隔攻击和病毒传播都是主要的威胁来源，路由攻击即攻击者将错误的路由信息发给其他节点来破坏其他节点的路由表，分隔攻击即节点陷入虚假网络。<p></p>
+<hr>
+<h1 id="Gnutella系统架构的改进"><a href="#Gnutella系统架构的改进" class="headerlink" title="Gnutella系统架构的改进"></a>Gnutella系统架构的改进</h1><p>一、针对冗余信息、扩展性差、效率低下这些缺点，近些年来有一些比较有名的路由机制改进算法：</p>
+<ol>
+<li>Randon Walker（随机泛洪搜索）： Gnutella中的搜索算法有flooding算法，对一定搜索半径内的所有邻居节点进行广播。与Gnutella中的flooding算法相比，该算法严格控制着每一步过程中扩散搜索的粒度，该算法中消息被称作walker，在每一次传递查询消息时，只将消息传给随机选择的部分邻居节点。通过控制walker的数量，可以减小网络开销，但是当网络的互连性比较低时，就会导致一些资源搜索不到。</li>
+<li>Expanding Ring（扩展环法搜索）：初始给TTL一个小值，如果查询到目标数据，则结束查询，否则增加TTL的值重新查询。该算法可以减少搜索的半径，与flooding相比可以减少查询消息的数量，但是有可能会延迟查询到目标资源的时间，是典型的用时间换空间的方法。<div class="image-package">
+
+</div></li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/27708-b47fc6768295b677.jpg?imageView2/2/w/1240/q/100" alt="Expanding Ring.jpg"></p>
+<p><div class="image-caption" style="text-align: center;">Expanding Ring.jpg</div><br></p>
+<ol>
+<li>最大聚集度优先搜索：Gnutella网络拓扑节点的分布有两大特性：“幂规律（Power-Law）”“小世界（Small World）”。定义到达某个节点的边的个数为节点的度，度为K的节点的分布概率为P(k)=k^(-τ)。幂规律可以简单解释为，在网络中有少数节点有较高的度，多数节点的“度”较低，这个规律就类似于经济学里的80/20定律。小世界即网络具有高聚集度而低特征路径长。根据这两个特性，改进节点搜索、查询消息的路由机制，提出最大聚集度方法，在查询的每一步仅将查询消息转发到一个聚集度最大的对等机节点。若真实网络的节点分布不具备这两大特性，该方法就无法起到任何作用。</li>
+<li>资源节点推荐策略：在现实中，有研究表明，视频和音频文件是在Gnutella中被共享最多的资源，约占了总文件容量的96%，因这些资源占大量流量及带宽，对这些资源的需求通常会持续一定时间，因此被查找到的目标节点再次被查找到的机率很大，但P2P网络的随机性决定了拥有资源的目标节点未必是服务能力强的，所以在网络持续一定时间后，这些节点可能会不堪重负，以致拒绝请求导致查找失败。基于该问题提出一个方法，即资源查找后的目的是复制资源，在一定时间后目标节点A已经把资源复制给了曾经提出复制请求的节点B和C，而A知道B、C拥有该资源，所以如果对于接下来的资源的复制请求，不堪重负的A可以将此请求转发给B和C，在B、C节点还有效的情况下，这必是一次有效的查找。</li>
+<li><p>Query查询包中加入路由信息搜索策略：在请求数据包中加入转发节点信息，如转发节点的所有相邻节点的IP地址或数据经过节点及其相邻节点的信息。但这些改进无法有效地减少冗余的搜索包，当发送节点与目标节点间有多条链路时，其中若干条链路所经过的节点数大于请求数据包能够记录的节点数，冗余数据包的转发就无法解决。即使不断加大数据包的容量也无法感知网络节点间的复杂连接关系，反而会加重网络传输负担。<br>二、针对free riding和tragedy of common问题，可以考虑采取激励机制模型：</p>
+</li>
+<li><p>基于服务质量的激励机制模型：为系统贡献多的节点可以获得更好的服务，贡献较少的节点只能获得较差的服务甚至得不到服务。这里的服务包括更快的上传下载速度，对某一产生传输瓶颈服务器的优先访问权等。</p>
+</li>
+<li><p>基于交易的激励机制模型：交易双方通过虚拟货币、货币等资源来换取对方的资源，系统利用计费的体系结构跟踪交易，使得资源在系统里流通。如此，节点为了得到服务或资源，就需要为其他节点提供更多更好的服务。<br>三、针对安全问题，有以下相对应的手段可以改善：</p>
+</li>
+<li><p>为了防止路由攻击，首先可以将可靠节点进行认证，如采用公钥机制认证；其次，在节点转发时检测查找是否沿着更接近目标节点的方向，这要求每个节点有跟踪查询的能力，并且路由的每一步都对查询者可见。</p>
+</li>
+<li>对于分隔攻击，采用安全性令牌的安全模型。令牌包含一组签发者用密码的方式签署的相关声明。请求节点可以通过安全性令牌服务节点来获得声明，中间节点也可以通过获得认证来向目标节点转发消息。若消息无声明，则可以被拒绝或者被忽略。</li>
+<li>对于病毒传播，可以采取现有的防毒体系。</li>
+<li>建立一套信用评价体系，使得用户只在信任的节点上进行共享资源的下载。包括对共享文件的评价，对对等节点的评价和评价者被制约的原则，这里对于实施细节不再赘述。</li>
+</ol>
+<h1 id="改进的实施环境："><a href="#改进的实施环境：" class="headerlink" title="改进的实施环境："></a>改进的实施环境：</h1><p>如图所示，即使有相同的节点度分布，网络拓扑模型也可能千差万别，这就使得网络协议要应用于所有类型的网络变成一件困难的事。真实的网络环境是复杂的，针对不同的地区和文化使用Gnutella的方式也不同，各种改进方法有各自的优缺点，故我们可以在特定的网络环境下采取不同的改进算法，使得收益最大化。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>董伟. Gnutella 网络共享模型的研究与改进[D]. 西安电子科技大学, 2008.<br>庄雷, 王从银, 潘春建. 消除 R_TTL 环: Gnutella 网络中减少冗余消息的解决方法[J]. 微计算机应用, 2004, 25(4): 420-425.<br>Adar E, Huberman B A. Free riding on Gnutella[J]. First Monday, 2000, 5(10).<br>王开华. 面向 Gnutella 和 eMule 网络拓扑测量和安全性分析[D]. 哈尔滨工业大学, 2008.<br>赵治国, 丁琳, 谭敏生. 基于询问—应答策略的 Gnutella 资源搜索算法的改进[J]. 计算机工程与设计, 2008, 29(7): 1694-1697.<br>郭大江, 陈闳中. Gnutella 网络搜索算法的改进[J]. 计算机工程与应用, 2006, 41(36): 123-124.<br>段世惠, 王劲林. Gnutella 网络文件共享属性的测量与分析[J]. 计算机工程与应用, 2009, 44(26): 12-17.<br>李师谦. 基于 Gnutella 协议的 P2P 网络激励机制模型的研究[D]. 山东大学, 2009.<br>周苗, 杨家海, 刘洪波, 等. Internet 网络拓扑建模[J]. Journal of Software, 2009, 20(1): 109-123.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/04/gnutella-e7-b3-bb-e7-bb-9f-e6-9e-b6-e6-9e-84-e7-9a-84-e7-bc-ba-e7-82-b9-e5-8f-8a-e6-94-b9-e8-bf-9b/" data-id="cj1f4obxl000sxds67sjqn3pi" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e8-b7-a8-e5-9b-bd-e6-96-87-e5-8c-96" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/27/e8-b7-a8-e5-9b-bd-e6-96-87-e5-8c-96/" class="article-date">
+  <time datetime="2014-11-27T14:36:47.000Z" itemprop="datePublished">2014-11-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/乱炖/">乱炖</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/27/e8-b7-a8-e5-9b-bd-e6-96-87-e5-8c-96/">跨国文化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今晚在复习这周学的跨国文化一课，明天考试。总结一番。<br>对待这门课的态度：欢迎互动，参与，和所想保持一定距离，对国籍态度保持清醒，放开思想，提高跨文化效率，提高管理能力。</p>
+<ul>
+<li><p><a href="#%E7%AC%AC%E4%B8%80%E8%8A%82">一、怎么看世界</a>*   <a href="#%E7%AC%AC%E4%BA%8C%E8%8A%82">二、文化</a></p>
+<pre><code>*   [2.1 两种文化趋势](#2.1)
+</code></pre><ul>
+<li><a href="#2.2">2.2 马斯洛需求金字塔</a></li>
+<li><a href="#2.3">2.3 Robert Kohls的冰山理论</a>*   <a href="#%E7%AC%AC%E4%B8%89%E8%8A%82">三、八个重要概念</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AC%AC%E5%9B%9B%E8%8A%82">四、历史与文明</a> </li>
+</ul>
+<h2 id="一、怎么看世界"><a href="#一、怎么看世界" class="headerlink" title="一、怎么看世界"></a>一、怎么看世界</h2><p>可以把世界地图画成很多种类型的：如政体、地形、预期寿命、HIV感染人数、幼儿死亡率、生产总值、购买力平价。这样子可以对世界有一个更直观的认识。<br>IDH：L’indice de developpement humain，人类发展指数。是一个统计学概念，由三个主要标准衡量：出生时的预期寿命，教育水平和生活水平。2014年中国排91名。<br>拥有护照的公民数：40%的法国人，22%的美国人，1.5%的中国人。<br>为什么对跨文化管理感兴趣：前五百强公司生产了占世界46%的财富，雇佣了1.6%的人口。 </p>
+<hr>
+<h2 id="二、文化"><a href="#二、文化" class="headerlink" title="二、文化"></a>二、文化</h2><h4 id="2-1-两种文化趋势"><a href="#2-1-两种文化趋势" class="headerlink" title="2.1 两种文化趋势"></a>2.1 两种文化趋势</h4><p>1.企业里常用到的八个主要的跨文化概念<br>2.文明的基础和历史谜题的文化 </p>
+<p><strong>定义文化的四种方法：</strong><br>1.文化圈:Global（全球）-National（全国）-Regional（区域）-Individuel（个人）.<br>2.UNESCO的定义:Dans son sens le plus large, la culture peut aujourd’hui etre consideree comme l’ensemble des traits distinctifs, spirituels et materiels, intellectuels et affectif, qui caracterisent une societe.在最广的意义上，现今文化可以被认为是一些有区别的行为集合，精神或物质的，理性或感性的，这些描述了一个社会。<br>包括了这几个方面：les modes de vie（生活方式）, les droits fondamendaux de l’etre humain(人的基本权利), les systemes de valeurs（价值体系）, les traditions（传统）, les croyances（信仰）, les arts et lettres（艺术文学）.<br>3.代代相传的四个要素：valeurs（价值）, normes（条例）, institutions, artefacts.<br>4.3 registres(Linguistique, para-linguistique, non linguistique)-3 filtres(Espece humaine, experience individuelle, experience culturelle)-2 niveaux(Inconscient/conscient).</p>
+<hr>
+<h4 id="2-2-马斯洛需求金字塔"><a href="#2-2-马斯洛需求金字塔" class="headerlink" title="2.2 马斯洛需求金字塔"></a>2.2 马斯洛需求金字塔</h4><p>从低端到顶端：<br>物质需求-安全感-归属感-自尊心-自我实现。<br>从一级需求到二级需求，从物质需求到社会需求到个人需求。<br>从社会地位的角度看，也可以是：<br>生理需求(physiological)-安全需求(safety)-融入需求(integration)-被尊敬需求(admiration)-自我实现(self-actualization)<br>stereotype:cliche，心理过程，形成原因有assimilation和contraste。 </p>
+<hr>
+<h4 id="2-3-Robert-Kohls的冰山理论"><a href="#2-3-Robert-Kohls的冰山理论" class="headerlink" title="2.3 Robert Kohls的冰山理论"></a>2.3 Robert Kohls的冰山理论</h4><p>表露在外面的只是一小部分。 </p>
+<hr>
+<p><strong>总结</strong>：审视理解的是否正确；从不同角度看问题(regarder les situations a partir d’angles differents)；后退一步考虑别的可能性；在确定之前三思；注意细节(preter attention aux details)；注意语境。</p>
+<hr>
+<h2 id="三、八个重要概念"><a href="#三、八个重要概念" class="headerlink" title="三、八个重要概念"></a>三、八个重要概念</h2><p>1.时间<br>关于时间的两种理解：I 时间就是金钱，计划，期限，一次只做一件事。<br>II 时间可伸缩，一次一天，偶然，迷信，传统是未来的保证。<br>画一条线的话，USA最靠近I，France在中间，中国靠近II。<br>守时：关联着礼貌和教育。是不同文化里最难互通的东西。 </p>
+<hr>
+<p>2.空间(E.T Hall)<br>Bulle personnelle, 个人安全距离，只属于我个人的周边空间(在美国为0~150cm，有时候更多)。<br>在日本，办公室可以坐27个人，泰国9个人，加拿大7个人。</p>
+<hr>
+<p>3.Soi et les autres，个人与他人<br>指向个人的文化和指向集体的文化：<br>前者包括原子弹家庭，自我实现，个人表现与价值，活跃，英雄主义，有话语权/创造性，有探险精神，有必要的私人空间/独立被价值化，我的老板没我好。<br>后者包括集体重于个人，任务早于权利，广阔的人际网，对别人的高认同，依赖被价值化，创造的价值属于集体，个人只是很小的一员，集体和个人互相有责任，低调。<br>买东西的西方思路和东方思路……<br>工作中如果发生事故，个人负责的程度，法国比较低，中国中等偏下。<br>个人自由度，中国法国都在中等偏下。<br>不歧视的招聘：code de travail，所有人不应因某些理由在招聘里受歧视。<br>个人主义，集体主义。</p>
+<hr>
+<p>4.交流语境<br>明确的还是含蓄的？</p>
+<hr>
+<p>5.领导力，权威和采取决定<br>权威的类型：是个人还是集体做决定，可以明确谁有决定权吗，在低权和高权中的distance有多少层？<br>公司金字塔。<br>discipline violation。</p>
+<hr>
+<p>6.对待动作的态度<br>避免不确定性<br>在避免不确定性里等级分为低和高，对于低的，未来是开放且不确定的，对于高的，人们倾向于在难点出现之前考虑它们。</p>
+<hr>
+<p>7.文化里的男性气质和女性气质<br>有多少人在过度工作里表示过自己的情绪？</p>
+<hr>
+<p>8.和大自然的关系<br>自然是用来被统治/被尊敬（自然母亲，起源）/统治人类的。<br>咸海（死海）的发展。</p>
+<hr>
+<h2 id="四、历史与文明"><a href="#四、历史与文明" class="headerlink" title="四、历史与文明"></a>四、历史与文明</h2><p>分为盎格鲁-撒克逊文明（英语国家文明/日耳曼文明）、拉丁文明、南撒哈拉文明、亚洲文明、斯拉夫文明（俄罗斯文明）。 </p>
+<p>盎格鲁-撒克逊文明：<br>斯堪的纳维亚时期，神，巨人和人类之间发生了共和民主的战争，16世纪产生了新教，和天主教分道扬镳。以美国为代表，个人为主导，人生就是一场战争，物竞天择，适者生存，In God we trust，国家的市场就是一个巨大的战场，有胜者负者。福利好，怀疑政府，把自己当作自由的代名词，认为对于所有人来说，一个自由的体制是最好的。作为胜利者，胜者即模本，参照物。</p>
+<p>拉丁文明:<br>le discours de la creation。有很多国家，比如南欧，拉美等。原则上是天主教国家，带有一些特殊的价值观（财富和工作比家庭和社交生活次要）。中央-集权，小中家族企业，团结创新，个人自由，尤其是言论。但是在领导者间，团结很难，所以言论和可持续关系很重要。中央-集权但也有自制空间，可以言政。属于西方国家但和上种文化感到巨大差异，更认同亚洲国家的文化或者中东的，喜欢花时间认识人。</p>
+<p>斯拉夫文明：<br>痛苦的辩证法，la dialectique du dechirement。<br>除了波兰和一些天主教国家外，斯拉夫文明有共同特点，正统的基督教徒，理想的社会公平，集体文化，独裁统治的传统，官僚主义。<br>被入侵(invasion)，所以有对痛苦的忍耐，习惯了宿命论，作为亚欧的接壤处想要超过欧洲国家，从根本抵制创新。<br>奴隶文化，正统基督教文化：对思想虚荣，心底的宗教，决定了丧失的人文环境，对权威的不抵抗，悲剧的命运，牺牲。<br>诡辩的怀疑论，没有business plan因为现实动荡不安，是独裁还是民主？坍塌的经济还是复活？</p>
+<p>非洲文明：<br>可见和不可见的辩证法，la dialectique du visible et de  l’invisible<br>原始宗教：万物有灵论，魔法，披上了西方的外衣。<br>最原始的文明，包括家族，社会，宗教，经济和政治，但是描述的文字不多，很多谜团，不能直接联系上帝或者女神，只能靠巫师或者女巫作为中介。伊斯兰在此集中并且进行商业活动。家庭是最基本的单位，复杂的社会网络，家谱很重要，部落。<br>用可见的方式来实现不可见的活动，生命力存在，给所有的活者/死者以能量，隐藏力也存在，改变着环境，祖先们保佑着个人和家族。<br>自给自足，要脸，有很多病。</p>
+<p>日本文明：<br>适应的辩证法，la dialectique de l’adaptation<br>传统的中国教义。<br>三个重要的历史阶段：1、大量的中国文化被传播到日本，如老庄之道，孔孟学说，佛学，中国文学，这是日本文化改革和逆向作用的阶段。2、孤立的阶段，尤其是幕府时期，从1600到1868年，特殊的文化矩阵，武士哲学，荣誉规章。3、持续到现在的阶段，主要是西方文化的融入，经济发展，及其与西方的竞争。<br>如果把中国当做周期性的中央帝国，日本就是一座岛屿。简单的，等待着一个最终的实现。<br>在日本的管理文化里，一致同意很重要，而非中国的少数服从多数。<br>日本的集体模型：雇佣的是人的生活而非仅工作时间，对组织一定忠诚，劳动者的多元价值，质量圈，一致同意的决定。<br>Akia Morita：American management treats workers as just tool to make money ………..</p>
+<hr>
+<p>最重要的优点：就是执行的质量。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/27/e8-b7-a8-e5-9b-bd-e6-96-87-e5-8c-96/" data-id="cj1f4obx4000lxds6t0r2oj3w" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e5-b0-8f-e8-b0-88naivebayesnb-e7-9a-84r-e5-ae-9e-e7-8e-b0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/23/e5-b0-8f-e8-b0-88naivebayesnb-e7-9a-84r-e5-ae-9e-e7-8e-b0/" class="article-date">
+  <time datetime="2014-11-23T15:46:47.000Z" itemprop="datePublished">2014-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/科学计算/">科学计算</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/23/e5-b0-8f-e8-b0-88naivebayesnb-e7-9a-84r-e5-ae-9e-e7-8e-b0/">小谈naiveBayes(NB)的R实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>朴素贝叶斯，英曰<strong>naive Bayes</strong>，有<strong>NB</strong>之名。通过后验概率来分类，该后验概率为先验概率与独立的各概率之积。该分类器要求多参数之间依赖性小，对于要预测的值来说，相对独立。<br>R语言中有一个神奇的包，名字为<strong>e1071</strong>，乍看像外星人入侵，而其为一机器学习类的包。其中有一函数名曰naiveBayes，即所需函数。<br>该函数的调用如下：</p>
+<pre><code>classifier &amp;lt;- naiveBayes(dataset[,1:2],dataset[,3])`&lt;/pre&gt;
+dataset的前两列是两个参数，第三列即要预测的特征。
+该处`classifier`为：
+&lt;pre class=&quot;hljs cpp&quot;&gt;`Naive Bayes Classifier &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; Discrete Predictors
+
+Call:
+naiveBayes.&lt;span class=&quot;hljs-keyword&quot;&gt;default&lt;/span&gt;(x = dataset[, &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;], y = dataset[, &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;])
+
+A-priori probabilities:
+dataset[, &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;]
+        F         M 
+&lt;span class=&quot;hljs-number&quot;&gt;0.2472325&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;0.7527675&lt;/span&gt; 
+
+Conditional probabilities:
+            V1
+dataset[, &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;]     [,&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;]     [,&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;]
+           F &lt;span class=&quot;hljs-number&quot;&gt;162.7836&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;5.356974&lt;/span&gt;
+           M &lt;span class=&quot;hljs-number&quot;&gt;174.7549&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;5.454523&lt;/span&gt;
+
+            V2
+dataset[, &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;]     [,&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;]     [,&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;]
+           F &lt;span class=&quot;hljs-number&quot;&gt;51.57836&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;5.704784&lt;/span&gt;
+           M &lt;span class=&quot;hljs-number&quot;&gt;66.52941&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;9.561985&lt;/span&gt;`&lt;/pre&gt;
+&lt;pre&gt;&lt;span style=&quot;font-family: Georgia, &apos;Times New Roman&apos;, &apos;Bitstream Charter&apos;, Times, serif;&quot;&gt;很明显，分别是先验概率和条件概率。&lt;/span&gt;&lt;/pre&gt;
+在训练样本找一个数来预测：
+&lt;pre&gt;`predict(classifier,dataset[86,1:2]);`&lt;/pre&gt;
+结果是这样的：
+&lt;pre&gt;`[1] M Levels: F M`&lt;/pre&gt;
+可见函数内部对预测数据进行了概率比较判断。
+如果要把训练集当做测试集来预测一遍的话，可以用这个函数：
+&lt;pre&gt;`table(predict(classifier, dataset[,1:2]), dataset[,3], dnn=list(&apos;predicted&apos;,&apos;actual&apos;))`&lt;/pre&gt;
+可以很明显地看到两者的区别：
+&lt;pre&gt;`           actual predicted   F   M         F 116  31         M  18 377`&lt;/pre&gt;
+ps，再记录一些文本处理和数据可视化的方法。
+读入数据：
+&lt;pre&gt;`dataset = read.table(&quot;D:/DataSet/dataset.txt&quot;);`&lt;/pre&gt;
+为了更好地对比，分屏后把原始数据集和预测数据集画在一起：
+&lt;pre class=&quot;hljs perl&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;split&lt;/span&gt;.screen(c(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;));
+screen(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;);
+plot(dataset[,c(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)], pch=&lt;span class=&quot;hljs-number&quot;&gt;22&lt;/span&gt;, col = ifelse(dataset&lt;span class=&quot;hljs-variable&quot;&gt;$gender&lt;/span&gt; == &lt;span class=&quot;hljs-string&quot;&gt;&quot;M&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&apos;green&apos;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&apos;red&apos;&lt;/span&gt; ), main = &lt;span class=&quot;hljs-string&quot;&gt;&quot;dataset&quot;&lt;/span&gt;);
+legend(&lt;span class=&quot;hljs-string&quot;&gt;&apos;topleft&apos;&lt;/span&gt;, c(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Male&quot;&lt;/span&gt;,&lt;span class=&quot;hljs-string&quot;&gt;&quot;Female&quot;&lt;/span&gt;), text.col = c(&lt;span class=&quot;hljs-string&quot;&gt;&quot;green&quot;&lt;/span&gt;,&lt;span class=&quot;hljs-string&quot;&gt;&quot;red&quot;&lt;/span&gt;))
+screen(&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;);
+plot(dataset[,c(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)],pch =&lt;span class=&quot;hljs-number&quot;&gt;21&lt;/span&gt;, col = ifelse(predict(classifier,dataset[,&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;])== &lt;span class=&quot;hljs-string&quot;&gt;&quot;M&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&apos;green&apos;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&apos;red&apos;&lt;/span&gt;), main = &lt;span class=&quot;hljs-string&quot;&gt;&quot;prediction set&quot;&lt;/span&gt;);
+legend(&lt;span class=&quot;hljs-string&quot;&gt;&apos;topleft&apos;&lt;/span&gt;, c(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Male&quot;&lt;/span&gt;,&lt;span class=&quot;hljs-string&quot;&gt;&quot;Female&quot;&lt;/span&gt;), text.col = c(&lt;span class=&quot;hljs-string&quot;&gt;&quot;green&quot;&lt;/span&gt;,&lt;span class=&quot;hljs-string&quot;&gt;&quot;red&quot;&lt;/span&gt;))
+&lt;span class=&quot;hljs-keyword&quot;&gt;close&lt;/span&gt;.screen(all = TRUE);
+</code></pre><p><pre><span style="font-family: Georgia, 'Times New Roman', 'Bitstream Charter', Times, serif;">最后画出来的图是这样的：</span></pre></p>
+<div class="image-package"><br><br><img src="http://upload-images.jianshu.io/upload_images/27708-00dee692add1474f.jpeg?imageView2/2/w/1240/q/100" alt="Rplot.jpeg"><br><div class="image-caption">Rplot.jpeg</div><br></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/23/e5-b0-8f-e8-b0-88naivebayesnb-e7-9a-84r-e5-ae-9e-e7-8e-b0/" data-id="cj1f4obws000dxds6ohksl0xj" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e5-af-82-e5-af-9evs-e7-90-86-e8-a7-a3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/19/e5-af-82-e5-af-9evs-e7-90-86-e8-a7-a3/" class="article-date">
+  <time datetime="2014-11-19T15:41:47.000Z" itemprop="datePublished">2014-11-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/19/e5-af-82-e5-af-9evs-e7-90-86-e8-a7-a3/">寂寞vs.理解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>《寂寞之歌》，几年前很喜欢的一本小说，作者是藤井树，又或者是吴什么，真名记不清了。笔名还是蛮重要的。如果我以后写小说，笔名就叫<em>落鸭齐飞</em>。<br>里面诉说了三个故事or更多？第一个故事是讲妈妈年轻时候的事。<br>我们理解妈妈吗？或者说，我们理解妈妈年轻过这件事吗？<br>想起酷似绿子的学妹跟我说，她妈妈告诉她，每天下班都要爬一个很长很长的上坡路，有一次爬上坡路的时候被大叔跟踪了。<br>妈妈也是年轻过的。妈妈也是有被大叔跟踪的青春的。<br>自己的至亲，自己却根本无法理解，这是一种怎样的寂寞。<br>——————————————————————————————<br>我和一个人聊得很开心。<br>我仿佛知道他的一切，他来自什么样的学校，他在哪里，他习惯吃哪家店，会点什么，他喜欢开什么样的玩笑，他喜欢过什么样的女生。然后呢？<br>我还会知道些什么呢？<br>他今天开心吗，他对于人生的理解怎样，小时候有没有什么事在他身上烙下了印记，他每天会想什么，他自信吗，勇敢吗。<br>所以，究竟他是个怎样的人？<br>——————————————————————————————<br>每个人都在自己渺小的星球自转。<br>无法言说的寂寞。<br>理解真难。<br>我根本就无法确定，我看到的你是不是真正的你，或者，你是不是还是真正的你，或者，你究竟长成了什么样的人，或者，究竟有没有真正的你。<br>成长，寂寞，了解。看似最容易的词，却是最难的事。<br>好吧，那么只要好好地陪伴就好了。<br>就像小狐狸跟小王子说，你会因为我金黄色的头发，而对麦子产生情绪。<br>如果做不到理解，做不到不寂寞，那么只要羁绊。<br>羁绊，是最美好的事了吧。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/19/e5-af-82-e5-af-9evs-e7-90-86-e8-a7-a3/" data-id="cj1f4obwo000axds6jet0z5yq" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e5-ae-87-e8-88-aa-e6-9c-8d-e5-a4-b4-e7-9b-94-e5-92-8c-e6-89-8b-e5-a5-97-e7-9a-84-e7-a7-8d-e7-a7-8d" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/19/e5-ae-87-e8-88-aa-e6-9c-8d-e5-a4-b4-e7-9b-94-e5-92-8c-e6-89-8b-e5-a5-97-e7-9a-84-e7-a7-8d-e7-a7-8d/" class="article-date">
+  <time datetime="2014-11-19T06:58:47.000Z" itemprop="datePublished">2014-11-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/乱炖/">乱炖</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/19/e5-ae-87-e8-88-aa-e6-9c-8d-e5-a4-b4-e7-9b-94-e5-92-8c-e6-89-8b-e5-a5-97-e7-9a-84-e7-a7-8d-e7-a7-8d/">宇航服头盔和手套的种种</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在宇航服中，头盔和手套是很重要的一部分系统结构。故拧出来研究一番。<br>在太空中，宇航员会遇到紫外线和流星离子，头盔的设计需要考虑到这些因素。</p>
+<h1 id="头盔的组成："><a href="#头盔的组成：" class="headerlink" title="头盔的组成："></a><strong>头盔的组成</strong>：</h1><blockquote>
+<p>三部分，头盔壳，面窗结构，颈圈。</p>
+<p>舱内头盔和通信头戴连在一起，是软头盔。舱外头盔是硬头盔，分为固定式和转动式，转动式里有一个气密活动轴承。当密封环节增多时，气密性和结构可靠性都会减弱。</p>
+<p><div class="image-package"></div></p>
+<p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/27708-857e3a0bf3af0486.jpg?imageView2/2/w/1240/q/100" alt="002564bb2b380e7e761518.jpg"></div><br>需要具备以下的功能：</p>
+</blockquote>
+<h2 id="头盔壳："><a href="#头盔壳：" class="headerlink" title="头盔壳："></a>头盔壳：</h2><blockquote>
+<p>1.强度大</p>
+<p>2.抗冲击</p>
+<p>3.足够的耐热性</p>
+</blockquote>
+<h2 id="面窗结构："><a href="#面窗结构：" class="headerlink" title="面窗结构："></a>面窗结构：</h2><blockquote>
+<p>1.良好的光学性能，广阔的视野</p>
+<p>2.防雾去湿，因出舱时会遇到零下摄氏度的低温</p>
+</blockquote>
+<h2 id="颈圈："><a href="#颈圈：" class="headerlink" title="颈圈："></a>颈圈：</h2><blockquote>
+<p>连接服装和头盔，上下两圈，要求穿脱方便，具良好的气密性和连接强度。</p>
+</blockquote>
+<h2 id="内腔："><a href="#内腔：" class="headerlink" title="内腔："></a>内腔：</h2><blockquote>
+<p>内腔壁分为硬衬垫和软衬垫，内有细管道，能减震，隔热，消声，通风，供氧。</p>
+<p>内腔要适于戴通讯头盔，能允许头在里面转动，尺寸与头型相适应，留有安装生理测试部件、有利于排出人体呼出CO2和水汽的空间。</p>
+</blockquote>
+<h1 id="手套的组成："><a href="#手套的组成：" class="headerlink" title="手套的组成："></a>手套的组成：</h1><blockquote>
+<p>内层：压力气囊</p>
+<p>外层：布，聚脂薄膜，金属网眼</p>
+<p>手指关节部分有波纹结构，便于操作。与服装通过腕圈相连。</p>
+</blockquote>
+<h1 id="头盔和手套的功能实现："><a href="#头盔和手套的功能实现：" class="headerlink" title="头盔和手套的功能实现："></a>头盔和手套的功能实现：</h1><p>主要通过特殊材料来实现这些功能。<br>但是还有一些传感器：</p>
+<blockquote>
+<p>1.头盔应急减压时面窗双自锁，手套有压力气囊，这些都用到了<strong>压力传感器</strong>。</p>
+<p>国内有自主研究的两款压力传感器。</p>
+<p>2.头盔上方有电视摄像头，即广播级摄像头，将宇航员出舱的场景传输到地面或者空间站。会用到<strong>图像传感器</strong>。</p>
+<p>图像传感器又名感光元件，分为两种：CMOS（互补式金属氧化物半导体有源像素传感器）和CCD（感光耦合元件），它们的历史发展如下图</p>
+<div class="image-package"><br><br><div class="image-caption"><img src="http://upload-images.jianshu.io/upload_images/27708-f36236996e8e29c2.jpg?imageView2/2/w/1240/q/100" alt="广播级摄像机CMOS与CCD的应用_李然.jpg"></div>
+
+<div class="image-caption">广播级摄像机CMOS与CCD的应用_李然.jpg</div>
+
+<p></p></div><p></p>
+<p>由图可以看到，CMOS的发展近期已与CCD持平，并且CMOS具有体积小和省电的特点，更适合用在头盔上。<br>CMOS的工作原理如下：</p>
+<div class="image-package">
+
+</div></blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/27708-7f2effc616ef4509.jpg?imageView2/2/w/1240/q/100" alt="CMOS图像传感器的研究进展_李继军.jpg"></p>
+<p><div class="image-caption">CMOS图像传感器的研究进展<em>李继军.jpg</em></div><br><br>如图所示，当光照到像元阵列上时，行选通逻辑选择需要的行像素单元，通过所在的列总线传输到模拟信号处理器和ADC（模数转换器_），从而转换成数字图像信号输出。</p>
+<h1 id="References："><a href="#References：" class="headerlink" title="References："></a>References：</h1><blockquote>
+<p>1.百度百科里“飞天宇航服”“宇航服”的词条。</p>
+<p>2.李然. 广播级摄像机 CMOS 与 CCD 的应用[J]. 影视制作, 2010, 8: 012.</p>
+<p>3.李继军, 杜云刚, 张丽华, 等. CMOS 图像传感器的研究进展[J]. 激光与光电子学进展, 2009, 46(4): 45-52.</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/19/e5-ae-87-e8-88-aa-e6-9c-8d-e5-a4-b4-e7-9b-94-e5-92-8c-e6-89-8b-e5-a5-97-e7-9a-84-e7-a7-8d-e7-a7-8d/" data-id="cj1f4obwh0008xds6l9x4hh6f" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/capteur/">capteur</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/乱炖/">乱炖</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得/">心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/科学计算/">科学计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FAQ/">FAQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modeling/">Modeling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scilab/">Scilab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/capteur/">capteur</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/datatable/">datatable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/host/">host</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job-interview/">job interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/name/">name</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neural-networks/">neural networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plot/">plot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/protractor/">protractor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pybrain/">pybrain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回归/">回归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建站/">建站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拟合/">拟合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据预测/">数据预测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/FAQ/" style="font-size: 10px;">FAQ</a> <a href="/tags/Modeling/" style="font-size: 10px;">Modeling</a> <a href="/tags/Scilab/" style="font-size: 10px;">Scilab</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/capteur/" style="font-size: 10px;">capteur</a> <a href="/tags/datatable/" style="font-size: 10px;">datatable</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/host/" style="font-size: 10px;">host</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/job-interview/" style="font-size: 10px;">job interview</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/list/" style="font-size: 10px;">list</a> <a href="/tags/matplotlib/" style="font-size: 10px;">matplotlib</a> <a href="/tags/name/" style="font-size: 10px;">name</a> <a href="/tags/neural-networks/" style="font-size: 10px;">neural networks</a> <a href="/tags/plot/" style="font-size: 10px;">plot</a> <a href="/tags/protractor/" style="font-size: 10px;">protractor</a> <a href="/tags/pybrain/" style="font-size: 10px;">pybrain</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/回归/" style="font-size: 10px;">回归</a> <a href="/tags/建站/" style="font-size: 10px;">建站</a> <a href="/tags/拟合/" style="font-size: 10px;">拟合</a> <a href="/tags/数据预测/" style="font-size: 10px;">数据预测</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/12/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/25/protractor-issue/">Protractor小问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/19/e5-90-ac-e4-b8-87-e9-9d-92/">听万青</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/19/e7-bd-91-e7-ab-99-e5-8a-a0-e8-bd-bd-e9-80-9f-e5-ba-a6-e5-b0-8f-e4-bc-98-e5-8c-96/">网站加载速度小优化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/06/job-search/">某呱找实习和找工作长达一年辛酸总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

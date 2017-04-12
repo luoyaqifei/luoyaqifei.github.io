@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SQL知识要点（一） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.行，又叫数据库记录（record） 2.列作为主键的条件:  每行必有一个主键（不能IS NULL） 主键不能被修改／更新 主键值不能重用 多列主键时，列值组合唯一  3.SQL可以一个字母一个字母地发音，也可以读作sequel 4.DISTINCT关键字作用于其后所有的列名，而非紧跟其后的列名 5.MySQL中，从第0行开始检索。所以 -- 从第6行起的5行数据 SELECT prod_na">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL知识要点（一）">
+<meta property="og:url" content="http://yoursite.com/2015/06/04/sql-knowledge-part-one/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.行，又叫数据库记录（record） 2.列作为主键的条件:  每行必有一个主键（不能IS NULL） 主键不能被修改／更新 主键值不能重用 多列主键时，列值组合唯一  3.SQL可以一个字母一个字母地发音，也可以读作sequel 4.DISTINCT关键字作用于其后所有的列名，而非紧跟其后的列名 5.MySQL中，从第0行开始检索。所以 -- 从第6行起的5行数据 SELECT prod_na">
+<meta property="og:updated_time" content="2017-04-12T15:25:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL知识要点（一）">
+<meta name="twitter:description" content="1.行，又叫数据库记录（record） 2.列作为主键的条件:  每行必有一个主键（不能IS NULL） 主键不能被修改／更新 主键值不能重用 多列主键时，列值组合唯一  3.SQL可以一个字母一个字母地发音，也可以读作sequel 4.DISTINCT关键字作用于其后所有的列名，而非紧跟其后的列名 5.MySQL中，从第0行开始检索。所以 -- 从第6行起的5行数据 SELECT prod_na">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-sql-knowledge-part-one" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/04/sql-knowledge-part-one/" class="article-date">
+  <time datetime="2015-06-03T16:19:11.000Z" itemprop="datePublished">2015-06-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQL知识要点（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.行，又叫数据库记录（record）</p>
+<p>2.列作为主键的条件:</p>
+<ul>
+<li>每行必有一个主键（不能IS NULL）</li>
+<li>主键不能被修改／更新</li>
+<li>主键值不能重用</li>
+<li>多列主键时，列值组合唯一</li>
+</ul>
+<p>3.SQL可以一个字母一个字母地发音，也可以读作sequel</p>
+<p>4.DISTINCT关键字作用于其后所有的列名，而非紧跟其后的列名</p>
+<p>5.MySQL中，从第0行开始检索。所以</p>
+<pre class="theme:onderka15 lang:mysql decode:true " title="指定从某位置搜索某数目">-- 从第6行起的5行数据
+SELECT prod_name
+FROM Products
+LIMIT 5 OFFSET 5;</pre>
+
+<p>6.ORDER BY支持按照相对列位置进行排序</p>
+<pre class="theme:onderka15 lang:mysql decode:true " title="按相对列位置进行排序">-- 按相对第二列、第三列进行排序
+SELECT prod_id, prod_price, prod_name
+FROM Products
+ORDER BY 2,3;</pre>
+
+<p>7.DESC关键字只作用于它前面的那一个列名</p>
+<p>8.排序时的大小写问题用简单的ORDER BY无法做到</p>
+<p>9.BETWEEN关键字包括开始值和结束值</p>
+<p>10.过滤数据时，一定要验证被过滤列里含NULL的列出现在了返回的数据中。因为默认匹配过滤时不会返回该值为NULL的列的结果</p>
+<p>11.NOT关键字可以用在要过滤的列前面或后面</p>
+<p>12.大部分DBSMS允许NOT否定任何条件</p>
+<p>13.IN操作符一般比一组OR操作符更快，并且可以包含其他SELECT语句，动态地建立数组</p>
+<p>14.通配符（wildcard）搜索只用于文本字段，即字符串。非文本数据类型字段不能使用</p>
+<p>15.%表示任意字符出现任意次数，包括0次</p>
+<p>16.MySQL中搜索不区分大小写，有些DBMS不区分</p>
+<p>17.很多DBMS都用空格填补字段内容，所以匹配时或者在最后加%或者用去空格函数（MySQL中，RTRIM()负责去掉右边空格）</p>
+<p>18.下划线匹配单个字符</p>
+<p>19.字段在数据库中一般与计算字段有关</p>
+<p>20.MySQL里连接函数为Concat()</p>
+<p>21.为了将调用函数得到的没有名字的计算字段加以引用，可以给它一个别名（alias），采用的是AS关键字</p>
+<p>22.别名还可以用于实际的表列名里有不合法字符或者含混、容易误解的情况</p>
+<p>23.别名也可以叫做导出列（derived column）</p>
+<p>24.可以用SELECT语句进行测试计算，比如</p>
+<pre class="theme:onderka15 lang:mysql decode:true ">-- 结果为6
+SELECT 2 * 3;
+-- 结果为abc
+SELECT TRIM(' abc ');</pre>
+
+<p>25.每个DBMS支持的函数几乎都不一样，所以难以移植，并且使用的话编写应用程序代码会较难。如果要用，做好注释</p>
+<p>26.SOUNDEX支持将任何文件转换为描述其读音表示的字母数字模式，所以当有些姓名只记得大致读音，可以用SOUNDEX查询到需要的姓名，如</p>
+<pre class="theme:onderka15 lang:mysql decode:true ">
+-- 返回的是Michelle Green
+SELECT cust_name, cust_contact
+FROM Customers
+WHERE SOUNDEX(cust_contact) = SOUNDEX('Michael Green');</pre>
+
+<p>27.日期和时间处理函数有重要作用，但是可移植性最差。数值函数使用率最低，但是几乎所有DBMS的数值函数都一样</p>
+<p>28.MySQL用YEAR()函数从日期中提取年份</p>
+<p>29.聚集函数（Aggregate Function）是能对某些列取平均／行数／最大值／最小值／和的函数，而且各处实现相当一致。 主要用于汇总数据</p>
+<p>30.COUNT(*)不会忽略NULL，但是COUNT()函数指定列名时会忽略列的值为空的行</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/04/sql-knowledge-part-one/" data-id="cj1f4obyo001gxds6d6bxxrhq" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/22/use-pybrain-to-fit-neural-networks/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          用Pybrain库进行神经网络拟合
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/26/frontend-tips/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">前端的种种</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/乱炖/">乱炖</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得/">心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/科学计算/">科学计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FAQ/">FAQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modeling/">Modeling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scilab/">Scilab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/capteur/">capteur</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/datatable/">datatable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/host/">host</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job-interview/">job interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/name/">name</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neural-networks/">neural networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plot/">plot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/protractor/">protractor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pybrain/">pybrain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回归/">回归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建站/">建站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拟合/">拟合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据预测/">数据预测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/FAQ/" style="font-size: 10px;">FAQ</a> <a href="/tags/Modeling/" style="font-size: 10px;">Modeling</a> <a href="/tags/Scilab/" style="font-size: 10px;">Scilab</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/capteur/" style="font-size: 10px;">capteur</a> <a href="/tags/datatable/" style="font-size: 10px;">datatable</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/host/" style="font-size: 10px;">host</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/job-interview/" style="font-size: 10px;">job interview</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/list/" style="font-size: 10px;">list</a> <a href="/tags/matplotlib/" style="font-size: 10px;">matplotlib</a> <a href="/tags/name/" style="font-size: 10px;">name</a> <a href="/tags/neural-networks/" style="font-size: 10px;">neural networks</a> <a href="/tags/plot/" style="font-size: 10px;">plot</a> <a href="/tags/protractor/" style="font-size: 10px;">protractor</a> <a href="/tags/pybrain/" style="font-size: 10px;">pybrain</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/回归/" style="font-size: 10px;">回归</a> <a href="/tags/建站/" style="font-size: 10px;">建站</a> <a href="/tags/拟合/" style="font-size: 10px;">拟合</a> <a href="/tags/数据预测/" style="font-size: 10px;">数据预测</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/12/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/25/protractor-issue/">Protractor小问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/19/e5-90-ac-e4-b8-87-e9-9d-92/">听万青</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/19/e7-bd-91-e7-ab-99-e5-8a-a0-e8-bd-bd-e9-80-9f-e5-ba-a6-e5-b0-8f-e4-bc-98-e5-8c-96/">网站加载速度小优化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/06/job-search/">某呱找实习和找工作长达一年辛酸总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

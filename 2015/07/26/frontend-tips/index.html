@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端的种种 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="很久没更新了，最近一直在努力实习。要开始准备找工作了，所以断开一些社交网络，开始边实习边刷题，也许会经常更新自己的刷题感想。毕竟算法还在入门阶段，有点困难。把这几天改前端bug时遇到的一些问题分享一下。 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝1. 拼接html是前端里很重要的一个思路，比如在根据用户查询条件对用户显示不同的表时，或者提示“你输入的有错，请重新输入”。比如table，要根据某个">
+<meta name="keywords" content="bootstrap,datatable,html,javascript,jsp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端的种种">
+<meta property="og:url" content="http://yoursite.com/2015/07/26/frontend-tips/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="很久没更新了，最近一直在努力实习。要开始准备找工作了，所以断开一些社交网络，开始边实习边刷题，也许会经常更新自己的刷题感想。毕竟算法还在入门阶段，有点困难。把这几天改前端bug时遇到的一些问题分享一下。 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝1. 拼接html是前端里很重要的一个思路，比如在根据用户查询条件对用户显示不同的表时，或者提示“你输入的有错，请重新输入”。比如table，要根据某个">
+<meta property="og:updated_time" content="2017-04-12T15:25:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端的种种">
+<meta name="twitter:description" content="很久没更新了，最近一直在努力实习。要开始准备找工作了，所以断开一些社交网络，开始边实习边刷题，也许会经常更新自己的刷题感想。毕竟算法还在入门阶段，有点困难。把这几天改前端bug时遇到的一些问题分享一下。 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝1. 拼接html是前端里很重要的一个思路，比如在根据用户查询条件对用户显示不同的表时，或者提示“你输入的有错，请重新输入”。比如table，要根据某个">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-frontend-tips" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/26/frontend-tips/" class="article-date">
+  <time datetime="2015-07-26T07:11:51.000Z" itemprop="datePublished">2015-07-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端的种种
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很久没更新了，最近一直在努力实习。<br>要开始准备找工作了，所以断开一些社交网络，开始边实习边刷题，也许会经常更新自己的刷题感想。<br>毕竟算法还在入门阶段，有点困难。<br>把这几天改前端bug时遇到的一些问题分享一下。</p>
+<p>＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝<br>1. 拼接html是前端里很重要的一个思路，比如在根据用户查询条件对用户显示不同的表时，或者提示“你输入的有错，请重新输入”。<br>比如table，要根据某个判断条件在table里增加某个cell，就在某个tr下append一个td。<br>比如某行输入有错，就可以加入这一判断条件，并在这个tr上append一个td。<br>2. 用dataTables时，要记得用之前判断是否有dataTables数据或者表格内容存在，若存在就清空，以免遇到了问题，而找不出原因。一般是将tbody整个清空。<br>3. 在类似于登陆界面上，我们想要光标自动锁定在用户名框内，可在html里，在</p>
+<pre class="lang:js decode:true ">&lt;input id="username" autofocus&gt;</pre>
+
+<p>语句里加上这个autofocus。<br>4. 若要根据不同的用户权限显示不同的界面，可以用display属性，将其设置为block或none，这个属性设置为none时不占页面空间。<br>5. 对于textarea在多个浏览器上的兼容问题，采用以下解决方法：<br>（1）在js内加入<code>event.preventDefault(); event.returnValue=false;</code>来避免回车键产生换行。（因为回车键要用于确定输入）<br>（2）在html内加入style的属性设置：<code>overflow:auto;</code>并将wrap设为“wrap”。<br>6. 在模态框（modal）和父窗口交互时，即要删除某行，弹出删除确认框。这里通过按钮</p>
+<pre class="lang:js decode:true ">&lt;button id="xxx" data-target="XXXmodal"&gt;</pre>
+
+<p>来弹出模态框。如何根据弹出的模态框来确定模态框所在的“删除”按钮呢？<br>这里搜了很久未果，最后在bootstrap的英文文档里发现：用event.relatedTarget来通过模态框事件得到模态框所在的按钮。并在<code>.on(&#39;show.bs.modal&#39;, function(e){});</code>里来做删除某行的确认操作。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/07/26/frontend-tips/" data-id="cj1f4obxh000pxds6jnu0zndf" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/datatable/">datatable</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsp/">jsp</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/06/04/sql-knowledge-part-one/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          SQL知识要点（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/06/job-search/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">某呱找实习和找工作长达一年辛酸总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/乱炖/">乱炖</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得/">心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/科学计算/">科学计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FAQ/">FAQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modeling/">Modeling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scilab/">Scilab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/capteur/">capteur</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/datatable/">datatable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/host/">host</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job-interview/">job interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/name/">name</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neural-networks/">neural networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plot/">plot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/protractor/">protractor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pybrain/">pybrain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回归/">回归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建站/">建站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拟合/">拟合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据预测/">数据预测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/FAQ/" style="font-size: 10px;">FAQ</a> <a href="/tags/Modeling/" style="font-size: 10px;">Modeling</a> <a href="/tags/Scilab/" style="font-size: 10px;">Scilab</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/capteur/" style="font-size: 10px;">capteur</a> <a href="/tags/datatable/" style="font-size: 10px;">datatable</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/host/" style="font-size: 10px;">host</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/job-interview/" style="font-size: 10px;">job interview</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/list/" style="font-size: 10px;">list</a> <a href="/tags/matplotlib/" style="font-size: 10px;">matplotlib</a> <a href="/tags/name/" style="font-size: 10px;">name</a> <a href="/tags/neural-networks/" style="font-size: 10px;">neural networks</a> <a href="/tags/plot/" style="font-size: 10px;">plot</a> <a href="/tags/protractor/" style="font-size: 10px;">protractor</a> <a href="/tags/pybrain/" style="font-size: 10px;">pybrain</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/回归/" style="font-size: 10px;">回归</a> <a href="/tags/建站/" style="font-size: 10px;">建站</a> <a href="/tags/拟合/" style="font-size: 10px;">拟合</a> <a href="/tags/数据预测/" style="font-size: 10px;">数据预测</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/12/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/25/protractor-issue/">Protractor小问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/19/e5-90-ac-e4-b8-87-e9-9d-92/">听万青</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/19/e7-bd-91-e7-ab-99-e5-8a-a0-e8-bd-bd-e9-80-9f-e5-ba-a6-e5-b0-8f-e4-bc-98-e5-8c-96/">网站加载速度小优化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/06/job-search/">某呱找实习和找工作长达一年辛酸总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

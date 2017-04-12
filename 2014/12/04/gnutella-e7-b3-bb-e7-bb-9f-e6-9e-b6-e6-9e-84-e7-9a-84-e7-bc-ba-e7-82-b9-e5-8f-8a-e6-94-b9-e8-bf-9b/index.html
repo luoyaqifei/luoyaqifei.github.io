@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Gnutella系统架构的缺点及改进 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Gnutella是一个P2P协议，也可以被看做一个系统架构or一个应用。准确地说还是一个网络共享协议。Gnutella的名字来源据说是创始人吃多了nutella（一种巧克力），所以它的发音也跟nutella相同。 Gnutella的缺点一、在Gnutella对资源进行搜索时，会用到一个变量TTL，要确定一个恰当的TTL值，有一定难度：1.如果设定的值比较高，因为查询终止条件是TTL=0，这样会让查">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gnutella系统架构的缺点及改进">
+<meta property="og:url" content="http://yoursite.com/2014/12/04/gnutella-e7-b3-bb-e7-bb-9f-e6-9e-b6-e6-9e-84-e7-9a-84-e7-bc-ba-e7-82-b9-e5-8f-8a-e6-94-b9-e8-bf-9b/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Gnutella是一个P2P协议，也可以被看做一个系统架构or一个应用。准确地说还是一个网络共享协议。Gnutella的名字来源据说是创始人吃多了nutella（一种巧克力），所以它的发音也跟nutella相同。 Gnutella的缺点一、在Gnutella对资源进行搜索时，会用到一个变量TTL，要确定一个恰当的TTL值，有一定难度：1.如果设定的值比较高，因为查询终止条件是TTL=0，这样会让查">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/27708-626a09c93aff3197.jpg?imageView2/2/w/1240/q/100">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/27708-b47fc6768295b677.jpg?imageView2/2/w/1240/q/100">
+<meta property="og:updated_time" content="2017-04-12T15:25:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gnutella系统架构的缺点及改进">
+<meta name="twitter:description" content="Gnutella是一个P2P协议，也可以被看做一个系统架构or一个应用。准确地说还是一个网络共享协议。Gnutella的名字来源据说是创始人吃多了nutella（一种巧克力），所以它的发音也跟nutella相同。 Gnutella的缺点一、在Gnutella对资源进行搜索时，会用到一个变量TTL，要确定一个恰当的TTL值，有一定难度：1.如果设定的值比较高，因为查询终止条件是TTL=0，这样会让查">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/27708-626a09c93aff3197.jpg?imageView2/2/w/1240/q/100">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-gnutella-e7-b3-bb-e7-bb-9f-e6-9e-b6-e6-9e-84-e7-9a-84-e7-bc-ba-e7-82-b9-e5-8f-8a-e6-94-b9-e8-bf-9b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/04/gnutella-e7-b3-bb-e7-bb-9f-e6-9e-b6-e6-9e-84-e7-9a-84-e7-bc-ba-e7-82-b9-e5-8f-8a-e6-94-b9-e8-bf-9b/" class="article-date">
+  <time datetime="2014-12-04T11:38:47.000Z" itemprop="datePublished">2014-12-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/网络/">网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Gnutella系统架构的缺点及改进
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Gnutella是一个P2P协议，也可以被看做一个系统架构or一个应用。<br>准确地说还是一个网络共享协议。<br>Gnutella的名字来源据说是创始人吃多了<strong>nutella</strong>（一种巧克力），所以它的发音也跟nutella相同。</p>
+<h1 id="Gnutella的缺点"><a href="#Gnutella的缺点" class="headerlink" title="Gnutella的缺点"></a>Gnutella的缺点</h1><p>一、在Gnutella对资源进行搜索时，会用到一个变量<strong>TTL</strong>，要确定一个恰当的TTL值，有一定难度：1.如果设定的值比较高，因为查询终止条件是TTL=0，这样会让查询次数成比例增长，给网络带来不必要的负担；2.如果设定的值比较小，会增加找不到所需要的目标资源的可能性。<br>二、Gnutella的拓扑结构过于复杂，会产生大量的Query冗余信息，扩展性较差。冗余消息会增加网络的负担，还会引起短路效应。</p>
+<div class="image-package">
+
+<p><img src="http://upload-images.jianshu.io/upload_images/27708-626a09c93aff3197.jpg?imageView2/2/w/1240/q/100" alt="冗余信息的成因.jpg"></p>
+<p><div class="image-caption" style="text-align: center;">冗余信息的成因.jpg</div><br></p></div><br>如图所示，有四个节点，分别为src起点，dest目标节点，和a、b两个中间节点。Src向周围的节点发送请求消息，a和b在接收后，将消息转发给目标节点dest，则dest会收到该消息的两个副本，后到的副本即可被视为冗余消息。<br>三、 Gnutella的假设和现实的冲突。大部分的P2P系统都基于这样的假设：所有的节点（参与者）都主动地、自愿地、毫无保留地共享自己拥有的有用资源。Adar的研究表明，接近70%的Gnutella用户不会共享任何资源，50%的答复来自1%的共享主机，这就是<strong>free riding（搭便车）</strong>问题。这种问题会导致<strong>Tragedy of Common（公共悲剧）</strong>问题，即由于P2P网络系统上大量相同资源的传播，造成共享资源趋于一致，P2P结构演变成传统的C/S（客户机/服务器）结构。根据分析，这些问题来自于Gnutella的使用者对安全性和机器带宽耗费的担忧。<br>四、安全问题。在Gnutella架构中，路由攻击、分隔攻击和病毒传播都是主要的威胁来源，路由攻击即攻击者将错误的路由信息发给其他节点来破坏其他节点的路由表，分隔攻击即节点陷入虚假网络。<p></p>
+<hr>
+<h1 id="Gnutella系统架构的改进"><a href="#Gnutella系统架构的改进" class="headerlink" title="Gnutella系统架构的改进"></a>Gnutella系统架构的改进</h1><p>一、针对冗余信息、扩展性差、效率低下这些缺点，近些年来有一些比较有名的路由机制改进算法：</p>
+<ol>
+<li>Randon Walker（随机泛洪搜索）： Gnutella中的搜索算法有flooding算法，对一定搜索半径内的所有邻居节点进行广播。与Gnutella中的flooding算法相比，该算法严格控制着每一步过程中扩散搜索的粒度，该算法中消息被称作walker，在每一次传递查询消息时，只将消息传给随机选择的部分邻居节点。通过控制walker的数量，可以减小网络开销，但是当网络的互连性比较低时，就会导致一些资源搜索不到。</li>
+<li>Expanding Ring（扩展环法搜索）：初始给TTL一个小值，如果查询到目标数据，则结束查询，否则增加TTL的值重新查询。该算法可以减少搜索的半径，与flooding相比可以减少查询消息的数量，但是有可能会延迟查询到目标资源的时间，是典型的用时间换空间的方法。<div class="image-package">
+
+</div></li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/27708-b47fc6768295b677.jpg?imageView2/2/w/1240/q/100" alt="Expanding Ring.jpg"></p>
+<p><div class="image-caption" style="text-align: center;">Expanding Ring.jpg</div><br></p>
+<ol>
+<li>最大聚集度优先搜索：Gnutella网络拓扑节点的分布有两大特性：“幂规律（Power-Law）”“小世界（Small World）”。定义到达某个节点的边的个数为节点的度，度为K的节点的分布概率为P(k)=k^(-τ)。幂规律可以简单解释为，在网络中有少数节点有较高的度，多数节点的“度”较低，这个规律就类似于经济学里的80/20定律。小世界即网络具有高聚集度而低特征路径长。根据这两个特性，改进节点搜索、查询消息的路由机制，提出最大聚集度方法，在查询的每一步仅将查询消息转发到一个聚集度最大的对等机节点。若真实网络的节点分布不具备这两大特性，该方法就无法起到任何作用。</li>
+<li>资源节点推荐策略：在现实中，有研究表明，视频和音频文件是在Gnutella中被共享最多的资源，约占了总文件容量的96%，因这些资源占大量流量及带宽，对这些资源的需求通常会持续一定时间，因此被查找到的目标节点再次被查找到的机率很大，但P2P网络的随机性决定了拥有资源的目标节点未必是服务能力强的，所以在网络持续一定时间后，这些节点可能会不堪重负，以致拒绝请求导致查找失败。基于该问题提出一个方法，即资源查找后的目的是复制资源，在一定时间后目标节点A已经把资源复制给了曾经提出复制请求的节点B和C，而A知道B、C拥有该资源，所以如果对于接下来的资源的复制请求，不堪重负的A可以将此请求转发给B和C，在B、C节点还有效的情况下，这必是一次有效的查找。</li>
+<li><p>Query查询包中加入路由信息搜索策略：在请求数据包中加入转发节点信息，如转发节点的所有相邻节点的IP地址或数据经过节点及其相邻节点的信息。但这些改进无法有效地减少冗余的搜索包，当发送节点与目标节点间有多条链路时，其中若干条链路所经过的节点数大于请求数据包能够记录的节点数，冗余数据包的转发就无法解决。即使不断加大数据包的容量也无法感知网络节点间的复杂连接关系，反而会加重网络传输负担。<br>二、针对free riding和tragedy of common问题，可以考虑采取激励机制模型：</p>
+</li>
+<li><p>基于服务质量的激励机制模型：为系统贡献多的节点可以获得更好的服务，贡献较少的节点只能获得较差的服务甚至得不到服务。这里的服务包括更快的上传下载速度，对某一产生传输瓶颈服务器的优先访问权等。</p>
+</li>
+<li><p>基于交易的激励机制模型：交易双方通过虚拟货币、货币等资源来换取对方的资源，系统利用计费的体系结构跟踪交易，使得资源在系统里流通。如此，节点为了得到服务或资源，就需要为其他节点提供更多更好的服务。<br>三、针对安全问题，有以下相对应的手段可以改善：</p>
+</li>
+<li><p>为了防止路由攻击，首先可以将可靠节点进行认证，如采用公钥机制认证；其次，在节点转发时检测查找是否沿着更接近目标节点的方向，这要求每个节点有跟踪查询的能力，并且路由的每一步都对查询者可见。</p>
+</li>
+<li>对于分隔攻击，采用安全性令牌的安全模型。令牌包含一组签发者用密码的方式签署的相关声明。请求节点可以通过安全性令牌服务节点来获得声明，中间节点也可以通过获得认证来向目标节点转发消息。若消息无声明，则可以被拒绝或者被忽略。</li>
+<li>对于病毒传播，可以采取现有的防毒体系。</li>
+<li>建立一套信用评价体系，使得用户只在信任的节点上进行共享资源的下载。包括对共享文件的评价，对对等节点的评价和评价者被制约的原则，这里对于实施细节不再赘述。</li>
+</ol>
+<h1 id="改进的实施环境："><a href="#改进的实施环境：" class="headerlink" title="改进的实施环境："></a>改进的实施环境：</h1><p>如图所示，即使有相同的节点度分布，网络拓扑模型也可能千差万别，这就使得网络协议要应用于所有类型的网络变成一件困难的事。真实的网络环境是复杂的，针对不同的地区和文化使用Gnutella的方式也不同，各种改进方法有各自的优缺点，故我们可以在特定的网络环境下采取不同的改进算法，使得收益最大化。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>董伟. Gnutella 网络共享模型的研究与改进[D]. 西安电子科技大学, 2008.<br>庄雷, 王从银, 潘春建. 消除 R_TTL 环: Gnutella 网络中减少冗余消息的解决方法[J]. 微计算机应用, 2004, 25(4): 420-425.<br>Adar E, Huberman B A. Free riding on Gnutella[J]. First Monday, 2000, 5(10).<br>王开华. 面向 Gnutella 和 eMule 网络拓扑测量和安全性分析[D]. 哈尔滨工业大学, 2008.<br>赵治国, 丁琳, 谭敏生. 基于询问—应答策略的 Gnutella 资源搜索算法的改进[J]. 计算机工程与设计, 2008, 29(7): 1694-1697.<br>郭大江, 陈闳中. Gnutella 网络搜索算法的改进[J]. 计算机工程与应用, 2006, 41(36): 123-124.<br>段世惠, 王劲林. Gnutella 网络文件共享属性的测量与分析[J]. 计算机工程与应用, 2009, 44(26): 12-17.<br>李师谦. 基于 Gnutella 协议的 P2P 网络激励机制模型的研究[D]. 山东大学, 2009.<br>周苗, 杨家海, 刘洪波, 等. Internet 网络拓扑建模[J]. Journal of Software, 2009, 20(1): 109-123.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/04/gnutella-e7-b3-bb-e7-bb-9f-e6-9e-b6-e6-9e-84-e7-9a-84-e7-bc-ba-e7-82-b9-e5-8f-8a-e6-94-b9-e8-bf-9b/" data-id="cj1f4obxl000sxds67sjqn3pi" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/27/e8-b7-a8-e5-9b-bd-e6-96-87-e5-8c-96/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          跨国文化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/20/python-e7-ac-94-e8-ae-b0-e4-b8-80/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">Python笔记(一)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/乱炖/">乱炖</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得/">心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/科学计算/">科学计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FAQ/">FAQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modeling/">Modeling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scilab/">Scilab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/capteur/">capteur</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/datatable/">datatable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/host/">host</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job-interview/">job interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/name/">name</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neural-networks/">neural networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plot/">plot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/protractor/">protractor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pybrain/">pybrain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回归/">回归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建站/">建站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拟合/">拟合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据预测/">数据预测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/FAQ/" style="font-size: 10px;">FAQ</a> <a href="/tags/Modeling/" style="font-size: 10px;">Modeling</a> <a href="/tags/Scilab/" style="font-size: 10px;">Scilab</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/capteur/" style="font-size: 10px;">capteur</a> <a href="/tags/datatable/" style="font-size: 10px;">datatable</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/host/" style="font-size: 10px;">host</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/job-interview/" style="font-size: 10px;">job interview</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/list/" style="font-size: 10px;">list</a> <a href="/tags/matplotlib/" style="font-size: 10px;">matplotlib</a> <a href="/tags/name/" style="font-size: 10px;">name</a> <a href="/tags/neural-networks/" style="font-size: 10px;">neural networks</a> <a href="/tags/plot/" style="font-size: 10px;">plot</a> <a href="/tags/protractor/" style="font-size: 10px;">protractor</a> <a href="/tags/pybrain/" style="font-size: 10px;">pybrain</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/回归/" style="font-size: 10px;">回归</a> <a href="/tags/建站/" style="font-size: 10px;">建站</a> <a href="/tags/拟合/" style="font-size: 10px;">拟合</a> <a href="/tags/数据预测/" style="font-size: 10px;">数据预测</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/12/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/25/protractor-issue/">Protractor小问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/19/e5-90-ac-e4-b8-87-e9-9d-92/">听万青</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/19/e7-bd-91-e7-ab-99-e5-8a-a0-e8-bd-bd-e9-80-9f-e5-ba-a6-e5-b0-8f-e4-bc-98-e5-8c-96/">网站加载速度小优化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/06/job-search/">某呱找实习和找工作长达一年辛酸总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Python的一些画图函数 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Python的画图工具箱即Matplotlib，类似于Matlab里面画图功能的包。在Python 里有一个集成了Matplotlib和其他一些数学包比如Numpy的包，叫Pylab，所以一般只需要：from pylab import *在这个包里面已经默认了numpy的alias为np，所以如果需要调用numpy直接就用它的alias就行。 #返回一个从x1到x2的共有num个数的数组（x1，x">
+<meta name="keywords" content="python,matplotlib,plot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python的一些画图函数">
+<meta property="og:url" content="http://yoursite.com/2015/04/29/python-matplotlib/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Python的画图工具箱即Matplotlib，类似于Matlab里面画图功能的包。在Python 里有一个集成了Matplotlib和其他一些数学包比如Numpy的包，叫Pylab，所以一般只需要：from pylab import *在这个包里面已经默认了numpy的alias为np，所以如果需要调用numpy直接就用它的alias就行。 #返回一个从x1到x2的共有num个数的数组（x1，x">
+<meta property="og:updated_time" content="2017-04-12T15:25:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python的一些画图函数">
+<meta name="twitter:description" content="Python的画图工具箱即Matplotlib，类似于Matlab里面画图功能的包。在Python 里有一个集成了Matplotlib和其他一些数学包比如Numpy的包，叫Pylab，所以一般只需要：from pylab import *在这个包里面已经默认了numpy的alias为np，所以如果需要调用numpy直接就用它的alias就行。 #返回一个从x1到x2的共有num个数的数组（x1，x">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python-matplotlib" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/29/python-matplotlib/" class="article-date">
+  <time datetime="2015-04-29T14:41:14.000Z" itemprop="datePublished">2015-04-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/科学计算/">科学计算</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python的一些画图函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python的画图工具箱即Matplotlib，类似于Matlab里面画图功能的包。<br>在Python 里有一个集成了Matplotlib和其他一些数学包比如Numpy的包，叫Pylab，所以一般只需要：from pylab import *<br>在这个包里面已经默认了numpy的alias为np，所以如果需要调用numpy直接就用它的alias就行。</p>
+<p>#返回一个从x1到x2的共有num个数的数组（x1，x2，num都代表参数，下同）<br><code>X＝np.linspace(x1, x2, num, endpoint=True)</code><br>这里如果endpoint设为True则重点为x2，设为False则终点为x2前一点。默认为True。</p>
+<p>#创建一个m*n个点的图，图的分辨率为t<br><code>figure(figsize=(m, n), dpi=t)</code></p>
+<p>#创建一个p*q的子图，接下来的图绘在第r块子图上<br><code>subplot(p, q, r)</code></p>
+<p>#画出以X数组为x轴数值，Y数组为y轴数值的图，线条颜色为红色，线条宽度为2.0（像素）且连续<br><code>plot(X, Y, color=&quot;red&quot;, linewidth=2.0, linestyle=&quot;-&quot;)</code></p>
+<p>#设置横纵轴的上下限<br><code>xlim(x1, x2)</code><br><code>ylim(y1, y2)</code><br>这里为了更好地设置上下限，可以用线条的X数组和Y数组的上下限来设置，如:<br><code>x1, x2 = X.min()_1.1, X.max()_1.1
+y1, y2 = Y.min()_1.1, Y.max()_1.1</code><br>或者可以引入差分的思想:<br><code>xmin, xmax = X.min(), X.max()
+ymin, ymax = Y.min(), Y.max()
+dx = (xmax - xmin) * 0.2
+dy = (ymax - ymin) * 0.2
+x1, x2 = xmin-dx, xmax+dx
+y1, y2 = ymin-dy, ymax+dy</code></p>
+<p>#设置横纵轴的长度及划分(即在这些点标记)<br><code>xticks(np.linspace(x1, x2, num, endpoint=True))</code><br><code>yticks(np.linspace(y1, y2, num, endpoint=True))</code><br>这里的xticks或yticks里面的数组值可以设置成我们想要知道的特殊值。<br>在边界值包含了<code>pi</code>这种字符时，可以用LaTex来做划分的标签（使其更美观）：<br><code>xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi],
+[r&#39;$-\pi$&#39;, r&#39;$-\pi/2$&#39;, r&#39;$0$&#39;, r&#39;$+\pi/2$&#39;, r&#39;$+\pi$&#39;])
+yticks([-1, 0, +1], [r&#39;$-1$&#39;, r&#39;$0$&#39;, r&#39;$1$&#39;])</code></p>
+<p>本文主要参考<a href="http://www.labri.fr/perso/nrougier/teaching/matplotlib/" target="_blank" rel="external">Matplotlib tutorial</a><br>将里面的范例总结成了<code>函数(参数)</code>形式。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/04/29/python-matplotlib/" data-id="cj1f4obyf001axds6missqir2" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matplotlib/">matplotlib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/plot/">plot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/04/27/ef-bc-bb-e4-b8-80-e8-93-91-e7-83-9f-e9-9b-a8-e4-bb-bb-e5-b9-b3-e7-94-9f-ef-bc-bd-e7-9a-84-e5-bc-80-e5-a4-b4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          ［一蓑烟雨任平生］的开头
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/05/02/python-how-to-get-list-name/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">[Python小技巧]怎样得到list的变量名称</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/乱炖/">乱炖</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得/">心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/科学计算/">科学计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FAQ/">FAQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modeling/">Modeling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scilab/">Scilab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/capteur/">capteur</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/datatable/">datatable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/host/">host</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job-interview/">job interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/name/">name</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neural-networks/">neural networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plot/">plot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/protractor/">protractor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pybrain/">pybrain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回归/">回归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建站/">建站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拟合/">拟合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据预测/">数据预测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/FAQ/" style="font-size: 10px;">FAQ</a> <a href="/tags/Modeling/" style="font-size: 10px;">Modeling</a> <a href="/tags/Scilab/" style="font-size: 10px;">Scilab</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/capteur/" style="font-size: 10px;">capteur</a> <a href="/tags/datatable/" style="font-size: 10px;">datatable</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/host/" style="font-size: 10px;">host</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/job-interview/" style="font-size: 10px;">job interview</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/list/" style="font-size: 10px;">list</a> <a href="/tags/matplotlib/" style="font-size: 10px;">matplotlib</a> <a href="/tags/name/" style="font-size: 10px;">name</a> <a href="/tags/neural-networks/" style="font-size: 10px;">neural networks</a> <a href="/tags/plot/" style="font-size: 10px;">plot</a> <a href="/tags/protractor/" style="font-size: 10px;">protractor</a> <a href="/tags/pybrain/" style="font-size: 10px;">pybrain</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/回归/" style="font-size: 10px;">回归</a> <a href="/tags/建站/" style="font-size: 10px;">建站</a> <a href="/tags/拟合/" style="font-size: 10px;">拟合</a> <a href="/tags/数据预测/" style="font-size: 10px;">数据预测</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/12/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/25/protractor-issue/">Protractor小问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/19/e5-90-ac-e4-b8-87-e9-9d-92/">听万青</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/19/e7-bd-91-e7-ab-99-e5-8a-a0-e8-bd-bd-e9-80-9f-e5-ba-a6-e5-b0-8f-e4-bc-98-e5-8c-96/">网站加载速度小优化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/06/job-search/">某呱找实习和找工作长达一年辛酸总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

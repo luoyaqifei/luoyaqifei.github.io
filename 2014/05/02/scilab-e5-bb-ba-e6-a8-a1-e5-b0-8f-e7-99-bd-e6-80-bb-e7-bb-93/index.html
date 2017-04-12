@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Scilab建模小白总结 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近考完“Scilab来处理力学方程（组）”，故来分享一下心得。第一次写技术类blog，虽然很小白，总归是一种进步。Scilab和Matlab很像，却远不如后者出名。为什么要学Scilab，可以弱弱地理解为“因为Scilab能实现的功能更少，所以更专注”吗？其实应该是法国人都喜欢用法国本土产的软件好吗，哪怕软件没有集成开发环境，如当时折腾n久都没装成功的Freefem。不过，Scilab至少可以自">
+<meta name="keywords" content="Modeling,Scilab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scilab建模小白总结">
+<meta property="og:url" content="http://yoursite.com/2014/05/02/scilab-e5-bb-ba-e6-a8-a1-e5-b0-8f-e7-99-bd-e6-80-bb-e7-bb-93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最近考完“Scilab来处理力学方程（组）”，故来分享一下心得。第一次写技术类blog，虽然很小白，总归是一种进步。Scilab和Matlab很像，却远不如后者出名。为什么要学Scilab，可以弱弱地理解为“因为Scilab能实现的功能更少，所以更专注”吗？其实应该是法国人都喜欢用法国本土产的软件好吗，哪怕软件没有集成开发环境，如当时折腾n久都没装成功的Freefem。不过，Scilab至少可以自">
+<meta property="og:updated_time" content="2017-04-12T15:25:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scilab建模小白总结">
+<meta name="twitter:description" content="最近考完“Scilab来处理力学方程（组）”，故来分享一下心得。第一次写技术类blog，虽然很小白，总归是一种进步。Scilab和Matlab很像，却远不如后者出名。为什么要学Scilab，可以弱弱地理解为“因为Scilab能实现的功能更少，所以更专注”吗？其实应该是法国人都喜欢用法国本土产的软件好吗，哪怕软件没有集成开发环境，如当时折腾n久都没装成功的Freefem。不过，Scilab至少可以自">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-scilab-e5-bb-ba-e6-a8-a1-e5-b0-8f-e7-99-bd-e6-80-bb-e7-bb-93" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/02/scilab-e5-bb-ba-e6-a8-a1-e5-b0-8f-e7-99-bd-e6-80-bb-e7-bb-93/" class="article-date">
+  <time datetime="2014-05-02T07:27:33.000Z" itemprop="datePublished">2014-05-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/科学计算/">科学计算</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Scilab建模小白总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近考完“Scilab来处理力学方程（组）”，故来分享一下心得。第一次写技术类blog，虽然很小白，总归是一种进步。<br>Scilab和Matlab很像，却远不如后者出名。为什么要学Scilab，可以弱弱地理解为“因为Scilab能实现的功能更少，所以更专注”吗？其实应该是<strong>法国人都喜欢用法国本土产的软件</strong>好吗，哪怕软件没有集成开发环境，如当时折腾n久都没装成功的Freefem。不过，Scilab至少可以自己解释自己编译，已经可以满足了，而且它还可以自动识别法语好不好。<br>一堆废话过后，进入正题。</p>
+<hr>
+<p>Scilab里面的注释行用的是<code>//</code>，跟一般的编程语言一样，这点不像Matlab。而且似乎不能整段话注释，有点麻烦。<br>我用的最多的常数是<code>%pi</code>，特来分享一下。–作为角速度的一部分。<br>注明：<code>q(j)=q(t=j)</code>, <code>t(j) =t(1)+dt*(j-1)</code><br>我们一共学了六个解方程（组）的方法，或者说<strong>只有三个</strong>。<br>以一个例子来实现：<br><code>ddq+w0^2*sinq=0</code></p>
+<h4 id="Solution-exacte"><a href="#Solution-exacte" class="headerlink" title="Solution exacte"></a>Solution exacte</h4><h5 id="准确解方法"><a href="#准确解方法" class="headerlink" title="准确解方法"></a><em>准确解方法</em></h5><p>准确解，这个就一带而过了，自己手动把方程解了，放到Scilab里面去编程实现数值解，所谓application numerique。 但是这只对线性常微分方程比较实用。所以不讨论。</p>
+<h4 id="Methode-d’Euler-explicite"><a href="#Methode-d’Euler-explicite" class="headerlink" title="Methode d’Euler explicite"></a>Methode d’Euler explicite</h4><h5 id="欧拉显性方法"><a href="#欧拉显性方法" class="headerlink" title="欧拉显性方法"></a><em>欧拉显性方法</em></h5><p>其实就是用逼近的方法，<br><code>q(j+1)=q(j)+dt*dq(j);</code><br><code>dq(j+1)=dq(j)+dt*ddq(j);</code><br>再把原始的方程式（组）敲进去就基本上可以解方程（组）了，如：<br><code>ddq(j+1)+w0^2*sin(q(j+1))=0;</code><br>这里也可以用矩阵关系式来实现，略过不述。</p>
+<h4 id="Methode-d’Euler-implicite"><a href="#Methode-d’Euler-implicite" class="headerlink" title="Methode d’Euler implicite"></a>Methode d’Euler implicite</h4><h5 id="欧拉隐性方法"><a href="#欧拉隐性方法" class="headerlink" title="欧拉隐性方法"></a><em>欧拉隐性方法</em></h5><p>这个方法和上面的区别就是在时间上的近似不同，<br><code>q(j+1)=q(j)+dt*dq(j+1);</code><br><code>dq(j+1)=dq(j)+dt*ddq(j+1);</code><br><code>ddq(j+1)+w0^2*sin(q(j+1))=0;</code><br>可是会出现一个问题，在循环（<em>iteration</em>）里<code>q(j)</code>,<code>dq(j)</code>,<code>ddq(j)</code>都是已知的，但是<code>q(j+1)</code>,<code>dq(j+1)</code>和<code>ddq(j+1)</code>都是未知的，这个问题怎么解决？电脑只能一步步地把已知的数值赋给未知（不讨论自带的解方程函数，因为我们没学=。-）。<br>在这种时候，可以手动推公式，把第三个方程代入第二个方程，再把第二个方程代入第一个，消元，得到<code>q(j+1)</code>关于<code>q(j)</code>和<code>dq(j)</code>的关系式，以及<code>dq(j+1)</code>关于<code>dq(j)</code>和<code>q(j+1)</code>的关系式。这里就可以得到一个放大矩阵(<em>matrice d’amplification</em>)，即<code>q(j+1)</code>和<code>dq(j+1)</code>关于<code>q(j)</code>和<code>dq(j)</code>的关系式矩阵，敲进Scilab就好啦。</p>
+<h4 id="Schema-de-Runge-Kutta"><a href="#Schema-de-Runge-Kutta" class="headerlink" title="Schema de Runge Kutta"></a>Schema de Runge Kutta</h4><h5 id="Runge-kutta方法"><a href="#Runge-kutta方法" class="headerlink" title="Runge kutta方法"></a><em>Runge kutta方法</em></h5><p>这个人名还真是诡异呀，有兴趣的话可以google一下。<br>这是方法里最容易复制却也最难理解的。大致就是在<code>t(j+1)</code>和<code>t(j)</code>中间设一个<code>t+dt/2</code>的时间，不断地调用函数，再求加权平均值，得到<code>U(j+1</code>)关于<code>U(j)</code>的关系式。贴一段代码感受一下。</p>
+<pre><code>dt=&lt;span class=&quot;hljs-number&quot;&gt;0.001&lt;/span&gt;
+t=(&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;:dt:&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;);
+n=size(t,&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;);
+
+function dU=calF(Uc,tc)
+
+  dU=zeros(&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;);
+  dU(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)=Uc(&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;);
+  dU(&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)=-&lt;span class=&quot;hljs-function&quot;&gt;w*w*&lt;span class=&quot;hljs-title&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Uc(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;)&lt;/span&gt;;
+endfunction
+
+U=zeros(&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;,n);
+U(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;
+U(&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)=&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+energie=zeros(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;,n);
+energie(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)=w*w*&lt;span class=&quot;hljs-number&quot;&gt;0.5&lt;/span&gt;;
+&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; j=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;:n-&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;
+  k1=calF(U(:,j),t(j));
+  UjA=U(:,j)+k1*dt/&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;;
+  k2=calF(UjA,t(j)+dt/&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;);
+  UjB=U(:,j)+k2*dt/&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;;
+  k3=calF(UjB,t(j)+dt/&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;);
+  UjC=U(:,j)+k3*dt;
+  k4=calF(UjC,t(j)+dt);
+  U(:,j+&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)=U(:,j)+(k1+&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;*k2+&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;*k3+k4)/&lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt;*dt;
+end`&lt;/pre&gt;
+下面是重头戏啦，两个NEWMARK的方法。
+
+#### Schema de Newmark explicite
+
+##### _Newmark显性方法_
+
+Newmark大神给了两个`q(j+1)`和`dq(j+1)`关于`q(j)`和`dq(j)`的通用关系式，以下一切都围绕着它走哟。
+&lt;pre class=&quot;hljs perl&quot;&gt;`&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt; = &lt;span class=&quot;hljs-string&quot;&gt;q(j)&lt;/span&gt; + dt*d&lt;span class=&quot;hljs-string&quot;&gt;q(j)&lt;/span&gt; +dt^&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt; *(&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;-beta)* dd&lt;span class=&quot;hljs-string&quot;&gt;q(j)&lt;/span&gt; +dt^&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;*beta*dd&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;;
+d&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;=d&lt;span class=&quot;hljs-string&quot;&gt;q(j)&lt;/span&gt;+dt*(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;-gamma)*dd&lt;span class=&quot;hljs-string&quot;&gt;q(j)&lt;/span&gt;+dt*gamma*dd&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;;`&lt;/pre&gt;
+在这个两个方程里面，`beta`和`gamma`是由我们自己选的常数。当我们选`beta=0`,`gamma=0.5`的时候，就变成了Newmark explicite形式，跟Euler explicite是不是很像？方法是一样的，所以不说了。
+但是如果选别的`beta`不等于`0`的数，情况就不同了，这个时候通常难以像Euler implicite那样得出可以供计算机自己运算的赋值式，于是就要进行处理。详见下面这种方法。
+
+#### Schema de Newmark implicite _Newmark隐性方法_
+
+我们选取`beta=0.25`,`gamma=0.5`进行讨论。
+神马方法可以避免这种不知道已知数的赋值呢？
+猜测！对。估量是一种很有效的办法。话说我们还学过一门课叫做**simulation et optimisation**，就叫做模拟与优化，或者叫做最优模拟，就是估一个初值，给定一个逼近条件，不停地逼近所要的准确值。这里也用到了这种方法，真是学以致学，学一直学啊。
+一般来说，在这里，我们从`j+1`时刻开始讨论。初值该赋什么就靠自己小小地动手推算啦。
+我们赋的初值是
+`//这里都是估值（*valeur estimee*）`
+&lt;pre class=&quot;hljs perl&quot;&gt;`dd&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;=&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;q(j)&lt;/span&gt;+d&lt;span class=&quot;hljs-string&quot;&gt;q(j)&lt;/span&gt;*dt+dt^&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;*(&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;-beta)*dd&lt;span class=&quot;hljs-string&quot;&gt;q(j)&lt;/span&gt;;
+d&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;=d&lt;span class=&quot;hljs-string&quot;&gt;q(j)&lt;/span&gt;+dt*(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;-gamma)*dd&lt;span class=&quot;hljs-string&quot;&gt;q(j)&lt;/span&gt;;`&lt;/pre&gt;
+我没代入`beta`和`gamma`，可以自行代入。
+在这个例子中，我们选取的逼近条件是`abs（ddq(j+1)-w0^2*q(j+1)）&amp;lt;epsilon`，选取一个相对小的`epsilon`，`0.01`就够啦，取决于你需要的精确度。
+如果现在的值还大于这个小`epsilon`的话，就需要进行修正（_correction_）。修正值也是需要自己推算的。这里有一定的技巧，就是采取Fourrier展开。Fourrier真乃神人也。
+三个修正值关系式分别是：
+&lt;pre class=&quot;hljs perl&quot;&gt;`deltaddq+deltaq*w&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;^&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;*&lt;span class=&quot;hljs-keyword&quot;&gt;cos&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;)=-(&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;+w&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;^&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;*&lt;span class=&quot;hljs-keyword&quot;&gt;sin&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;); &lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;这里还需要自行代入deltaq计算一下
+deltadq=gamma*dt*deltaddq;
+deltaq=beta*dt^&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;*deltaddq;`&lt;/pre&gt;
+再把这些修正值加和到估值里去：
+&lt;pre class=&quot;hljs perl&quot;&gt;`&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;=deltaq+&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;;
+d&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;=deltadq+d&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;;
+dd&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;=deltaddq+dd&lt;span class=&quot;hljs-string&quot;&gt;q(j+1)&lt;/span&gt;;
+</code></pre><p>再放入逼近条件里去运算，不满足条件的话继续循环。<br>直到满足条件，就开始进行<code>j+2</code>时刻的类似循环。</p>
+<hr>
+<p>再给一些小<strong>tips</strong>：<br><code>plot()</code>函数一次只能给一幅图，如果多画一幅图的话，我用的是<code>figure</code>后再加<code>plot()</code>。同学用的是<code>subplot()</code>把图面划分为几个坐标系来画。<br>一定不要忘了每一次赋初值。忘了也不报错，只是错。<br>估量就好像菇凉一样，不停地逼近准确值后，就熟了（好冷）。<br>第一次用<code>Markdown</code>写笔记啊，哈哈。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/02/scilab-e5-bb-ba-e6-a8-a1-e5-b0-8f-e7-99-bd-e6-80-bb-e7-bb-93/" data-id="cj1f4obyk001dxds6pyx37t9b" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modeling/">Modeling</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scilab/">Scilab</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2014/11/19/e5-ae-87-e8-88-aa-e6-9c-8d-e5-a4-b4-e7-9b-94-e5-92-8c-e6-89-8b-e5-a5-97-e7-9a-84-e7-a7-8d-e7-a7-8d/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">宇航服头盔和手套的种种</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/乱炖/">乱炖</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得/">心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/科学计算/">科学计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FAQ/">FAQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modeling/">Modeling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scilab/">Scilab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/capteur/">capteur</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/datatable/">datatable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/host/">host</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job-interview/">job interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/name/">name</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neural-networks/">neural networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plot/">plot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/protractor/">protractor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pybrain/">pybrain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回归/">回归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建站/">建站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拟合/">拟合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据预测/">数据预测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/FAQ/" style="font-size: 10px;">FAQ</a> <a href="/tags/Modeling/" style="font-size: 10px;">Modeling</a> <a href="/tags/Scilab/" style="font-size: 10px;">Scilab</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/capteur/" style="font-size: 10px;">capteur</a> <a href="/tags/datatable/" style="font-size: 10px;">datatable</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/host/" style="font-size: 10px;">host</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/job-interview/" style="font-size: 10px;">job interview</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/list/" style="font-size: 10px;">list</a> <a href="/tags/matplotlib/" style="font-size: 10px;">matplotlib</a> <a href="/tags/name/" style="font-size: 10px;">name</a> <a href="/tags/neural-networks/" style="font-size: 10px;">neural networks</a> <a href="/tags/plot/" style="font-size: 10px;">plot</a> <a href="/tags/protractor/" style="font-size: 10px;">protractor</a> <a href="/tags/pybrain/" style="font-size: 10px;">pybrain</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/回归/" style="font-size: 10px;">回归</a> <a href="/tags/建站/" style="font-size: 10px;">建站</a> <a href="/tags/拟合/" style="font-size: 10px;">拟合</a> <a href="/tags/数据预测/" style="font-size: 10px;">数据预测</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/12/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/25/protractor-issue/">Protractor小问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/19/e5-90-ac-e4-b8-87-e9-9d-92/">听万青</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/19/e7-bd-91-e7-ab-99-e5-8a-a0-e8-bd-bd-e9-80-9f-e5-ba-a6-e5-b0-8f-e4-bc-98-e5-8c-96/">网站加载速度小优化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/06/job-search/">某呱找实习和找工作长达一年辛酸总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

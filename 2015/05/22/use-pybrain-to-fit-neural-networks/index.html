@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>用Pybrain库进行神经网络拟合 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Pybrain号称最好用的Python神经网络库。其实Scikit-Learn号称Python上最好用的机器学习库，但是它偏偏就没有神经网络这块，所以就与我无缘了。 之前也看过一些提到Neurolab这个库的，打算之后尝试一下（好像支持的神经网络不太一样）。 Pybrain的文档传说中写得不错，但是我需要的例子它并没有。官方文档给的例子是用于分类的，而不是数据拟合（预测，或者叫做回归问题）。 另外">
+<meta name="keywords" content="python,neural networks,pybrain,回归,拟合,数据预测,神经网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Pybrain库进行神经网络拟合">
+<meta property="og:url" content="http://yoursite.com/2015/05/22/use-pybrain-to-fit-neural-networks/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Pybrain号称最好用的Python神经网络库。其实Scikit-Learn号称Python上最好用的机器学习库，但是它偏偏就没有神经网络这块，所以就与我无缘了。 之前也看过一些提到Neurolab这个库的，打算之后尝试一下（好像支持的神经网络不太一样）。 Pybrain的文档传说中写得不错，但是我需要的例子它并没有。官方文档给的例子是用于分类的，而不是数据拟合（预测，或者叫做回归问题）。 另外">
+<meta property="og:updated_time" content="2017-04-12T15:25:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Pybrain库进行神经网络拟合">
+<meta name="twitter:description" content="Pybrain号称最好用的Python神经网络库。其实Scikit-Learn号称Python上最好用的机器学习库，但是它偏偏就没有神经网络这块，所以就与我无缘了。 之前也看过一些提到Neurolab这个库的，打算之后尝试一下（好像支持的神经网络不太一样）。 Pybrain的文档传说中写得不错，但是我需要的例子它并没有。官方文档给的例子是用于分类的，而不是数据拟合（预测，或者叫做回归问题）。 另外">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-use-pybrain-to-fit-neural-networks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/22/use-pybrain-to-fit-neural-networks/" class="article-date">
+  <time datetime="2015-05-22T12:35:30.000Z" itemprop="datePublished">2015-05-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/科学计算/">科学计算</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用Pybrain库进行神经网络拟合
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Pybrain</strong>号称最好用的Python神经网络库。其实<strong>Scikit-Learn</strong>号称Python上最好用的机器学习库，但是它偏偏就没有神经网络这块，所以就与我无缘了。</p>
+<p>之前也看过一些提到<strong>Neurolab</strong>这个库的，打算之后尝试一下（好像支持的神经网络不太一样）。</p>
+<p><strong>Pybrain</strong>的文档传说中写得不错，但是我需要的例子它并没有。官方文档给的例子是用于分类的，而不是<strong>数据拟合（预测，或者叫做回归问题）</strong>。</p>
+<p>另外，官方文档的函数（方法）说明并不全，有一些需要自己通过help函数在python shell里调用，或者直接阅读源代码。</p>
+<p>好了言归正传。大概分为以下这几步。</p>
+<ol>
+<li>构造神经网络</li>
+<li>构造数据集</li>
+<li>训练神经网络</li>
+<li>结果可视化</li>
+<li>验证与分析</li>
+</ol>
+<hr>
+<h2 id="构造神经网络"><a href="#构造神经网络" class="headerlink" title="构造神经网络"></a>构造神经网络</h2><p>可以采用快速建立神经网络的模式，也可以自己设定神经网络。这里采用第二种做法，建立的是前馈神经网络。</p>
+<pre class="lang:python decode:true " title="构造神经网络">from pybrain.structure import *
+# 建立神经网络fnn
+fnn = FeedForwardNetwork()
+
+# 设立三层，一层输入层（3个神经元，别名为inLayer），一层隐藏层，一层输出层
+inLayer = LinearLayer(3, name='inLayer')
+hiddenLayer = SigmoidLayer(7, name='hiddenLayer0')
+outLayer = LinearLayer(1, name='outLayer')
+
+# 将三层都加入神经网络（即加入神经元）
+fnn.addInputModule(inLayer)
+fnn.addModule(hiddenLayer)
+fnn.addOutputModule(outLayer)
+
+# 建立三层之间的连接
+in_to_hidden = FullConnection(inLayer, hiddenLayer)
+hidden_to_out = FullConnection(hiddenLayer, outLayer)
+
+# 将连接加入神经网络
+fnn.addConnection(in_to_hidden)
+fnn.addConnection(hidden_to_out)
+
+# 让神经网络可用
+fnn.sortModules()
+</pre>
+
+<hr>
+<h2 id="构造数据集"><a href="#构造数据集" class="headerlink" title="构造数据集"></a>构造数据集</h2><p>在构造数据集的时候，我用的是SupervisedDataset，即监督数据集。也可以试一试别的。</p>
+<pre class="lang:python decode:true " title="构造数据集">from pybrain.supervised.trainers import BackpropTrainer
+
+# 定义数据集的格式是三维输入，一维输出
+DS = SupervisedDataSet(3,1)
+
+# 往数据集内加样本点
+# 假设x1，x2，x3是输入的三个维度向量，y是输出向量，并且它们的长度相同
+for i in len(y):
+    DS.addSample([x1[i], x2[i], x3[i]], [y[i]])
+
+# 如果要获得里面的输入／输出时，可以用
+X = DS['input']
+Y = DS['target']
+
+# 如果要把数据集切分成训练集和测试集，可以用下面的语句，训练集：测试集＝8:2
+# 为了方便之后的调用，可以把输入和输出拎出来
+dataTrain, dataTest = DS.splitWithProportion(0.8)
+xTrain, yTrain = dataTrain['input'], dataTrain['target']
+xTest, yTest = dataTest['input'], dataTest['target']
+
+</pre>
+
+<p>构造数据集部分就这样告一段落了。</p>
+<hr>
+<h2 id="训练神经网络"><a href="#训练神经网络" class="headerlink" title="训练神经网络"></a>训练神经网络</h2><p>俗话说得好，80%的工作往往是20%的部分完成的。嗯哼，其实最重要的代码就是如下这几行啦。<br>不过调用的是别人的东西，也不知道内部的实现比例，就是开个玩笑。</p>
+<pre class="lang:python decode:true " title="训练神经网络">from pybrain.supervised.trainers import BackpropTrainer
+
+# 训练器采用BP算法
+# verbose = True即训练时会把Total error打印出来，库里默认训练集和验证集的比例为4:1，可以在括号里更改
+trainer = BackpropTrainer(fnn, dataTrain, verbose = True, learningrate=0.01)
+
+# maxEpochs即你需要的最大收敛迭代次数，这里采用的方法是训练至收敛，我一般设为1000
+trainer.trainUntilConvergence(maxEpochs=1000)
+</pre>
+
+<hr>
+<h2 id="结果可视化"><a href="#结果可视化" class="headerlink" title="结果可视化"></a>结果可视化</h2><p>数据可视化就不提了，基本上用的是Pylab来进行数据可视化，具体可见这篇博文：<br><a href="http://www.zengmingxia.com/python-matplotlib/" target="_blank" rel="external">Python的一些画图函数</a> 。</p>
+<hr>
+<h2 id="验证与分析"><a href="#验证与分析" class="headerlink" title="验证与分析"></a>验证与分析</h2><ul>
+<li>首先，我们可以挑一个随机数据来看看结果。</li>
+</ul>
+<pre class="lang:python decode:true " title="随机验证">import random
+
+# c为从0到xTest的长度（包括0，不包括长度）之间的随机值
+c = random.randint(0, xTest.shape[0])
+
+# X2为xTest的一个随机样本点
+X2 = xTest[c,:]
+
+# activate函数即神经网络训练后，预测的X2的输出值
+prediction = fnn.activate(X2)
+
+# 可以将其打印出来
+print('true number is: ' + str(yTest[c]),
+    'prediction number is:' + str(prediction),
+      'error:' + str((prediction-yTest[c])/yTest[c]))</pre>
+
+<ul>
+<li>我们可以把神经网络打印出来，此处的代码是在stackoverflow里找到的，出处忘了，感谢那个哥们的轮子。<br>这样就可以看各条连接的权重了。</li>
+</ul>
+<pre class="lang:python decode:true " title="打印神经网络">for mod in fnn.modules:
+  print "Module:", mod.name
+  if mod.paramdim &gt; 0:
+    print "--parameters:", mod.params
+  for conn in fnn.connections[mod]:
+    print "-connection to", conn.outmod.name
+    if conn.paramdim &gt; 0:
+       print "- parameters", conn.params
+  if hasattr(fnn, "recurrentConns"):
+    print "Recurrent connections"
+    for conn in fnn.recurrentConns:             
+       print "-", conn.inmod.name, " to", conn.outmod.name
+       if conn.paramdim &gt; 0:
+          print "- parameters", conn.params</pre>
+
+<ul>
+<li>我们可以调用一个计时器来看程序的运行时间，判断性能</li>
+</ul>
+<pre class="lang:python decode:true " title="计时">import time
+
+# 在需要计时的代码前调用这个
+start = time.clock()
+
+# 在需要计时的代码后再调用一次clock函数
+elapsed = (time.clock()-start)
+print("Time used:" + str(elapsed))</pre>
+
+<ul>
+<li>如果需要一些统计数据的话，可以自己写一些统计类的函数，或者找包里的<code>tools</code>模块，有一些统计函数，比如均方误差（MSE）等。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/05/22/use-pybrain-to-fit-neural-networks/" data-id="cj1f4obyt001kxds6aod9kayg" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/neural-networks/">neural networks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pybrain/">pybrain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/回归/">回归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拟合/">拟合</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据预测/">数据预测</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/13/java-string-api/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          [我的笔记] JAVA String常用API
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/04/sql-knowledge-part-one/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">SQL知识要点（一）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/乱炖/">乱炖</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得/">心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/科学计算/">科学计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FAQ/">FAQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modeling/">Modeling</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scilab/">Scilab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/capteur/">capteur</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/datatable/">datatable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dict/">dict</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/host/">host</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job-interview/">job interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/name/">name</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neural-networks/">neural networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plot/">plot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/protractor/">protractor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pybrain/">pybrain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回归/">回归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建站/">建站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拟合/">拟合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据预测/">数据预测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/FAQ/" style="font-size: 10px;">FAQ</a> <a href="/tags/Modeling/" style="font-size: 10px;">Modeling</a> <a href="/tags/Scilab/" style="font-size: 10px;">Scilab</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/capteur/" style="font-size: 10px;">capteur</a> <a href="/tags/datatable/" style="font-size: 10px;">datatable</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/host/" style="font-size: 10px;">host</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/job-interview/" style="font-size: 10px;">job interview</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/list/" style="font-size: 10px;">list</a> <a href="/tags/matplotlib/" style="font-size: 10px;">matplotlib</a> <a href="/tags/name/" style="font-size: 10px;">name</a> <a href="/tags/neural-networks/" style="font-size: 10px;">neural networks</a> <a href="/tags/plot/" style="font-size: 10px;">plot</a> <a href="/tags/protractor/" style="font-size: 10px;">protractor</a> <a href="/tags/pybrain/" style="font-size: 10px;">pybrain</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/回归/" style="font-size: 10px;">回归</a> <a href="/tags/建站/" style="font-size: 10px;">建站</a> <a href="/tags/拟合/" style="font-size: 10px;">拟合</a> <a href="/tags/数据预测/" style="font-size: 10px;">数据预测</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/12/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/25/protractor-issue/">Protractor小问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/19/e5-90-ac-e4-b8-87-e9-9d-92/">听万青</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/19/e7-bd-91-e7-ab-99-e5-8a-a0-e8-bd-bd-e9-80-9f-e5-ba-a6-e5-b0-8f-e4-bc-98-e5-8c-96/">网站加载速度小优化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/06/job-search/">某呱找实习和找工作长达一年辛酸总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
